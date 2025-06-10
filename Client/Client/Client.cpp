@@ -27,7 +27,7 @@ void Client::OnConnectClicked() {
         return;
     }
 
-    Login* loginWindow = new Login(socket);  // socket 포인터 넘겨줌
+    Login* loginWindow = new Login(this, socket);  // socket 포인터 넘겨줌
     loginWindow->show();
     this->hide();
 }

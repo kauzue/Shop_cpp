@@ -37,6 +37,9 @@
     <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="signup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Client.h">
@@ -45,12 +48,18 @@
     <QtMoc Include="Login.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="signup.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Login.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Client.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="signup.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

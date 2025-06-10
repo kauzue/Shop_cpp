@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Init.h" />
     <ClInclude Include="ServerSocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Init.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ServerSocket.cpp" />
   </ItemGroup>

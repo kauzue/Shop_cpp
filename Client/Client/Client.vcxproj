@@ -36,7 +36,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.9.0_msvc2022_64</QtInstall>
+    <QtInstall>6.9.1_msvc2022_64</QtInstall>
     <QtModules>core;gui;network;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="signup.cpp" />
     <QtRcc Include="Client.qrc" />
     <QtMoc Include="Client.h" />
     <ClCompile Include="Client.cpp" />
@@ -104,9 +105,13 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="Client.ui" />
     <QtUic Include="Login.ui" />
+    <QtUic Include="signup.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="signup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

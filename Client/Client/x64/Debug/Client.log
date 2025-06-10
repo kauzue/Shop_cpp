@@ -1,3 +1,6 @@
-﻿   Qt/MSBuild: 3.3.1.1
-   Qt: 6.9.0
-  Client.vcxproj -> C:\Users\kauzu\source\repos\Shop_Cpp\Client\x64\Debug\Client.exe
+﻿   Qt/MSBuild: 3.4.0.1
+   Qt: 6.9.1
+  Client.cpp
+  moc_Login.cpp
+  moc_signup.cpp
+  Client.vcxproj -> D:\개발\Shop_cpp\Client\x64\Debug\Client.exe

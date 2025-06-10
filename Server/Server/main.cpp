@@ -1,7 +1,12 @@
 #include <iostream>
+
+#include "Init.h"
 #include "ServerSocket.h"
 
 int main() {
+    Init init;
+    init.CheckAndCreateFiles();
+
     int port;
     std::cout << "서버 포트 번호 입력: ";
     std::cin >> port;
