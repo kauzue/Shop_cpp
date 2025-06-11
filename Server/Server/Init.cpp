@@ -1,28 +1,19 @@
 #include "Init.h"
 #include <fstream>
-#include <iostream>
-
-Init::Init() {
-    userFile = "user.csv";
-    adminFile = "admin.txt";
-}
+#include <filesystem>
 
 void Init::CheckAndCreateFiles() {
-    std::ifstream userCheck(userFile);
-    if (!userCheck.is_open()) {
-        std::ofstream userCreate(userFile);
-        if (userCreate.is_open()) {
-            userCreate << "id,password\n"; // 헤더 줄 추가
-            std::cout << "[시스템] user.csv 파일이 생성되었습니다.\n";
-        }
+    namespace fs = std::filesystem;
+
+    if (!fs::exists("user.csv")) {
+        std::ofstream file("user.csv");
+        file << "nickname,password\n";
+        file.close();
     }
 
-    std::ifstream adminCheck(adminFile);
-    if (!adminCheck.is_open()) {
-        std::ofstream adminCreate(adminFile);
-        if (adminCreate.is_open()) {
-            adminCreate << "admin";
-            std::cout << "[시스템] admin.txt 파일이 생성되었습니다.\n";
-        }
+    if (!fs::exists("admin.txt")) {
+        std::ofstream file("admin.txt");
+        file << "admin:adminpass\n";
+        file.close();
     }
 }

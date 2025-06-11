@@ -1,23 +1,15 @@
 #pragma once
-
 #include <winsock2.h>
-#include <string>
 #include <vector>
-
-#pragma comment(lib, "ws2_32.lib")
+#include <string>
 
 class ServerSocket {
 private:
-    SOCKET socket;
+    SOCKET serverSocket;
     std::vector<SOCKET> clients;
 
-    bool InitWinSock();
-    std::string GetLocalIPAddress();
-
 public:
-    ServerSocket();
-    ~ServerSocket();
-
-    bool Start(int port);
+    bool StartServer(int port);
     void AcceptClients();
+    void HandleClient(SOCKET clientSocket);
 };
