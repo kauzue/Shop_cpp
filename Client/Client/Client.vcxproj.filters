@@ -23,10 +23,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Client.qrc">
+    <QtRcc Include="ServerConnect.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <ClCompile Include="Client.cpp">
+    <QtUic Include="ServerConnect.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="ServerConnect.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="ServerConnect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -37,18 +43,15 @@
     <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="signup.cpp">
+    <ClCompile Include="Signup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Client.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="Login.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="signup.h">
+    <QtMoc Include="Signup.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -56,10 +59,7 @@
     <QtUic Include="Login.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Client.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="signup.ui">
+    <QtUic Include="Signup.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

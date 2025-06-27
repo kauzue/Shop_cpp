@@ -1,19 +1,15 @@
 #include "Init.h"
 #include <fstream>
-#include <filesystem>
 
-void Init::CheckAndCreateFiles() {
-    namespace fs = std::filesystem;
-
-    if (!fs::exists("user.csv")) {
-        std::ofstream file("user.csv");
-        file << "nickname,password\n";
-        file.close();
+void Init::CheckFiles() {
+    std::ifstream user("user.csv");
+    if (!user) {
+        std::ofstream out("user.csv");
+        out << "nickname,hashed_password\n";
     }
 
-    if (!fs::exists("admin.txt")) {
-        std::ofstream file("admin.txt");
-        file << "admin:adminpass\n";
-        file.close();
+    std::ifstream admin("admin.txt");
+    if (!admin) {
+        std::ofstream out("admin.txt");
     }
 }

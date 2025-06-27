@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'signup.h'
+** Meta object code from reading C++ file 'Signup.h'
 **
 ** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../signup.h"
+#include "../../../../Signup.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -16,7 +16,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'signup.h' doesn't include <QObject>."
+#error "The header file 'Signup.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
 #error "This file was generated using the moc from 6.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -39,15 +39,15 @@ template <> constexpr inline auto Signup::qt_create_metaobjectdata<qt_meta_tag_Z
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "Signup",
-        "OnSignupBtnClicked",
+        "on_signupBtn_clicked",
         "",
-        "OnExitBtnClicked"
+        "on_backBtn_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'OnSignupBtnClicked'
+        // Slot 'on_signupBtn_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'OnExitBtnClicked'
+        // Slot 'on_backBtn_clicked'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -72,8 +72,8 @@ void Signup::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     auto *_t = static_cast<Signup *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->OnSignupBtnClicked(); break;
-        case 1: _t->OnExitBtnClicked(); break;
+        case 0: _t->on_signupBtn_clicked(); break;
+        case 1: _t->on_backBtn_clicked(); break;
         default: ;
         }
     }

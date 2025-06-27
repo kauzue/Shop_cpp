@@ -1,6 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.0.1
    Qt: 6.9.1
-  Client.cpp
-  moc_Login.cpp
-  moc_signup.cpp
+  Login.cpp
+  Signup.cpp
   Client.vcxproj -> D:\개발\Shop_cpp\Client\x64\Debug\Client.exe

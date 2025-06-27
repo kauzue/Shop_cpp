@@ -2,5 +2,5 @@
 
 class Init {
 public:
-    static void CheckAndCreateFiles();
+    static void CheckFiles();
 };

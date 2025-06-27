@@ -1,16 +1,12 @@
-﻿#include "signup.h"
-#include "ui_signup.h"
+#include "Signup.h"
+#include "ui_Signup.h"
+#include "Login.h"
 #include <QMessageBox>
 
 Signup::Signup(QWidget* parent, QTcpSocket* socket)
-    : QMainWindow(parent)
-    , ui(new Ui::Signup)
-    , socket(socket)
+    : QMainWindow(parent), ui(new Ui::Signup), socket(socket)
 {
     ui->setupUi(this);
-
-    connect(ui->signupBtn, &QPushButton::clicked, this, &Signup::OnSignupBtnClicked);
-    connect(ui->exitBtn, &QPushButton::clicked, this, &Signup::OnExitBtnClicked);  // 이름 변경됨
 }
 
 Signup::~Signup()
@@ -18,36 +14,51 @@ Signup::~Signup()
     delete ui;
 }
 
-void Signup::OnSignupBtnClicked()
+void Signup::on_signupBtn_clicked()
 {
-    QString id = ui->idEdit->text();
-    QString pw = ui->pwEdit->text();
+    QString nickname = ui->nicknameEdit->text().trimmed();
+    QString password = ui->passwordEdit->text();
+    QString confirm = ui->confirmEdit->text();
 
-    if (id.isEmpty() || pw.isEmpty()) {
-        QMessageBox::warning(this, "입력 오류", "아이디와 비밀번호를 입력하세요.");
+    if (nickname.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+        QMessageBox::warning(this, "입력 오류", "모든 항목을 입력하세요.");
         return;
     }
 
-    QString msg = "signup:" + id + ":" + pw + "\n";
-    socket->write(msg.toUtf8());
-    socket->flush();
+    if (password != confirm) {
+        QMessageBox::warning(this, "입력 오류", "비밀번호가 일치하지 않습니다.");
+        return;
+    }
 
-    if (socket->waitForReadyRead(2000)) {
-        QString response = QString::fromUtf8(socket->readAll());
-        if (response.contains("signup:success")) {
-            QMessageBox::information(this, "성공", "회원가입이 완료되었습니다.");
-            close();
+	QString msg = "signup:" + nickname + ":" + password;
+	socket->write(msg.toUtf8());
+	socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+		QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        if (response == "success") {
+            QMessageBox::information(this, "회원가입 성공", "회원가입이 완료되었습니다.");
+            Login* loginWindow = new Login(nullptr, socket);
+            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
+            loginWindow->show();
+            this->close();
+        }
+        else if (response == "duplicate") {
+            QMessageBox::warning(this, "중복", "이미 존재하는 닉네임입니다.");
         }
         else {
-            QMessageBox::warning(this, "실패", "회원가입에 실패했습니다.");
+            QMessageBox::warning(this, "오류", "오류 : " + response);
         }
     }
     else {
-        QMessageBox::warning(this, "오류", "서버 응답이 없습니다.");
+        QMessageBox::warning(this, "오류", "서버로 부터 응답이 없습니다.");
     }
 }
 
-void Signup::OnExitBtnClicked()  // 이름 변경됨
+void Signup::on_backBtn_clicked()
 {
-    close();
+    Login* loginWindow = new Login(nullptr, socket);
+    loginWindow->setAttribute(Qt::WA_DeleteOnClose);
+    loginWindow->show();
+    this->close();
 }

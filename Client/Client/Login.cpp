@@ -1,19 +1,13 @@
-﻿#include "login.h"
-#include "ui_login.h"
-#include "signup.h"
-
+#include "Login.h"
+#include "ui_Login.h"
+#include "Signup.h"
+#include "ServerConnect.h"
 #include <QMessageBox>
 
 Login::Login(QWidget* parent, QTcpSocket* socket)
-    : QMainWindow(parent)
-    , ui(new Ui::Login)
-    , socket(socket)
+    : QMainWindow(parent), ui(new Ui::Login), socket(socket)
 {
     ui->setupUi(this);
-
-    connect(ui->loginBtn, &QPushButton::clicked, this, &Login::OnLoginBtnClicked);
-    connect(ui->signupBtn, &QPushButton::clicked, this, &Login::OnSignupBtnClicked);
-    connect(ui->exitBtn, &QPushButton::clicked, this, &Login::OnExitBtnClicked);
 }
 
 Login::~Login()
@@ -21,52 +15,70 @@ Login::~Login()
     delete ui;
 }
 
-void Login::OnLoginBtnClicked()
+void Login::setServerInfo(const QString& ip, quint16 port)
 {
-    if (!socket || socket->state() != QAbstractSocket::ConnectedState) {
-        QMessageBox::critical(this, "연결 실패", "서버에 연결되어 있지 않습니다.");
+    serverIp = ip;
+    serverPort = port;
+}
+
+void Login::on_loginBtn_clicked()
+{
+    QString nickname = ui->nicknameEdit->text().trimmed();
+    QString password = ui->passwordEdit->text();
+
+    if (nickname.isEmpty() || password.isEmpty()) {
+        QMessageBox::warning(this, "입력 오류", "닉네임과 비밀번호를 모두 입력하세요.");
         return;
     }
 
-    QString id = ui->idEdit->text();
-    QString pw = ui->pwEdit->text();
-
-    if (id.isEmpty() || pw.isEmpty()) {
-        QMessageBox::warning(this, "입력 오류", "아이디와 비밀번호를 모두 입력하세요.");
-        return;
-    }
-
-    QString loginMsg = "login:" + id + ":" + pw + "\n";
-    socket->write(loginMsg.toUtf8());
+    QString msg = "login:" + nickname + ":" + password;
+    socket->write(msg.toUtf8());
     socket->flush();
 
-    if (socket->waitForReadyRead(2000)) {
-        QByteArray response = socket->readAll();
-        QString reply(response);
-
-        if (reply.contains("login:success")) {
+    if (socket->waitForReadyRead(3000)) {
+        QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        if (response == "success") {
             QMessageBox::information(this, "로그인 성공", "로그인에 성공했습니다.");
-            // TODO: 메인 화면으로 이동하는 코드 추가
+
+            //이거 수정해서 메인화면 띄우면 됨
+            /*Login* loginWindow = new Login(nullptr, socket);
+            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
+            loginWindow->show();
+            this->close();*/
+        }
+        else if (response == "success:admin") {
+            QMessageBox::information(this, "관리자", "관리자 계정으로 로그인하였습니다.");
+
+            //이거 수정해서 관리자 화면 띄우면 됨
+            /*Login* loginWindow = new Login(nullptr, socket);
+            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
+            loginWindow->show();
+            this->close();*/
+        }
+        else if (response == "fail") {
+            QMessageBox::warning(this, "실패", "아이디 혹은 비밀번호가 일치하지 않습니다.");
         }
         else {
-            ui->statusLabel->setText("아이디 또는 비밀번호가 잘못되었습니다.");
+            QMessageBox::warning(this, "오류", "오류 : " + response);
         }
     }
     else {
-        QMessageBox::warning(this, "응답 없음", "서버로부터 응답이 없습니다.");
+        QMessageBox::warning(this, "오류", "서버로 부터 응답이 없습니다.");
     }
 }
 
-void Login::OnSignupBtnClicked()
+void Login::on_signupBtn_clicked()
 {
-    Signup* signupWindow = new Signup(this, socket);
+    Signup* signupWindow = new Signup(nullptr, socket);
+    signupWindow->setAttribute(Qt::WA_DeleteOnClose);
     signupWindow->show();
+    this->close();
 }
 
-void Login::OnExitBtnClicked()
+void Login::on_backBtn_clicked()
 {
-    if (socket && socket->isOpen()) {
-        socket->disconnectFromHost();
-    }
-    close();
+    ServerConnect* serverConnectWindow = new ServerConnect;
+    serverConnectWindow->setAttribute(Qt::WA_DeleteOnClose);
+    serverConnectWindow->show();
+    this->close();
 }

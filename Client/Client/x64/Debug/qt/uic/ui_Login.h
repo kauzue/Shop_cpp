@@ -12,11 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,78 +28,71 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QFormLayout *formLayout;
-    QLabel *label_id;
-    QLineEdit *idEdit;
-    QLabel *label_password;
-    QLineEdit *pwEdit;
-    QLabel *statusLabel;
+    QLabel *labelNickname;
+    QLineEdit *nicknameEdit;
+    QLabel *labelPassword;
+    QLineEdit *passwordEdit;
+    QHBoxLayout *buttonLayout;
     QPushButton *loginBtn;
     QPushButton *signupBtn;
-    QPushButton *exitBtn;
-    QStatusBar *statusbar;
+    QPushButton *backBtn;
 
     void setupUi(QMainWindow *Login)
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName("Login");
-        Login->resize(400, 300);
+        Login->resize(400, 250);
         centralwidget = new QWidget(Login);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName("verticalLayout");
         formLayout = new QFormLayout();
-        formLayout->setSpacing(6);
         formLayout->setObjectName("formLayout");
-        label_id = new QLabel(centralwidget);
-        label_id->setObjectName("label_id");
+        labelNickname = new QLabel(centralwidget);
+        labelNickname->setObjectName("labelNickname");
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, label_id);
+        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, labelNickname);
 
-        idEdit = new QLineEdit(centralwidget);
-        idEdit->setObjectName("idEdit");
+        nicknameEdit = new QLineEdit(centralwidget);
+        nicknameEdit->setObjectName("nicknameEdit");
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, idEdit);
+        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, nicknameEdit);
 
-        label_password = new QLabel(centralwidget);
-        label_password->setObjectName("label_password");
+        labelPassword = new QLabel(centralwidget);
+        labelPassword->setObjectName("labelPassword");
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, label_password);
+        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, labelPassword);
 
-        pwEdit = new QLineEdit(centralwidget);
-        pwEdit->setObjectName("pwEdit");
-        pwEdit->setEchoMode(QLineEdit::Password);
+        passwordEdit = new QLineEdit(centralwidget);
+        passwordEdit->setObjectName("passwordEdit");
+        passwordEdit->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, pwEdit);
+        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, passwordEdit);
 
 
         verticalLayout->addLayout(formLayout);
 
-        statusLabel = new QLabel(centralwidget);
-        statusLabel->setObjectName("statusLabel");
-
-        verticalLayout->addWidget(statusLabel);
-
+        buttonLayout = new QHBoxLayout();
+        buttonLayout->setObjectName("buttonLayout");
         loginBtn = new QPushButton(centralwidget);
         loginBtn->setObjectName("loginBtn");
 
-        verticalLayout->addWidget(loginBtn);
+        buttonLayout->addWidget(loginBtn);
 
         signupBtn = new QPushButton(centralwidget);
         signupBtn->setObjectName("signupBtn");
 
-        verticalLayout->addWidget(signupBtn);
+        buttonLayout->addWidget(signupBtn);
 
-        exitBtn = new QPushButton(centralwidget);
-        exitBtn->setObjectName("exitBtn");
+        backBtn = new QPushButton(centralwidget);
+        backBtn->setObjectName("backBtn");
 
-        verticalLayout->addWidget(exitBtn);
+        buttonLayout->addWidget(backBtn);
+
+
+        verticalLayout->addLayout(buttonLayout);
 
         Login->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(Login);
-        statusbar->setObjectName("statusbar");
-        Login->setStatusBar(statusbar);
 
         retranslateUi(Login);
 
@@ -108,14 +101,12 @@ public:
 
     void retranslateUi(QMainWindow *Login)
     {
-        Login->setWindowTitle(QCoreApplication::translate("Login", "Login", nullptr));
-        label_id->setText(QCoreApplication::translate("Login", "ID", nullptr));
-        label_password->setText(QCoreApplication::translate("Login", "\353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
-        statusLabel->setText(QString());
-        statusLabel->setStyleSheet(QCoreApplication::translate("Login", "color: red;", nullptr));
-        loginBtn->setText(QCoreApplication::translate("Login", "\353\241\234\352\267\270\354\235\270", nullptr));
+        Login->setWindowTitle(QCoreApplication::translate("Login", "\353\241\234\352\267\270\354\235\270", nullptr));
+        labelNickname->setText(QCoreApplication::translate("Login", "\353\213\211\353\204\244\354\236\204", nullptr));
+        labelPassword->setText(QCoreApplication::translate("Login", "\353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
+        loginBtn->setText(QCoreApplication::translate("Login", "\355\231\225\354\235\270", nullptr));
         signupBtn->setText(QCoreApplication::translate("Login", "\355\232\214\354\233\220\352\260\200\354\236\205", nullptr));
-        exitBtn->setText(QCoreApplication::translate("Login", "\354\242\205\353\243\214", nullptr));
+        backBtn->setText(QCoreApplication::translate("Login", "\354\235\264\354\240\204", nullptr));
     } // retranslateUi
 
 };

@@ -3,9 +3,9 @@
 #include <QMainWindow>
 #include <QTcpSocket>
 
-namespace Ui {
-    class Signup;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class Signup; }
+QT_END_NAMESPACE
 
 class Signup : public QMainWindow
 {
@@ -16,8 +16,8 @@ public:
     ~Signup();
 
 private slots:
-    void OnSignupBtnClicked();
-    void OnExitBtnClicked();
+    void on_signupBtn_clicked();
+    void on_backBtn_clicked();
 
 private:
     Ui::Signup* ui;

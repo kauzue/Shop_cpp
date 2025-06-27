@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{85D7DBED-2C7B-47F6-A2A3-8A7DAD7D4E0F}</ProjectGuid>
+    <ProjectGuid>{33F6DE50-298A-42C0-9A57-7291B88ECE1C}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
@@ -41,7 +41,7 @@
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>6.9.0_msvc2022_64</QtInstall>
+    <QtInstall>6.9.1_msvc2022_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
@@ -92,26 +92,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="signup.cpp" />
-    <QtRcc Include="Client.qrc" />
-    <QtMoc Include="Client.h" />
-    <ClCompile Include="Client.cpp" />
-    <ClCompile Include="Login.cpp">
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </ClCompile>
-    <ClCompile Include="main.cpp" />
-    <QtUic Include="Client.ui" />
+    <ClCompile Include="Signup.cpp" />
+    <QtRcc Include="ServerConnect.qrc" />
     <QtUic Include="Login.ui" />
-    <QtUic Include="signup.ui" />
+    <QtUic Include="ServerConnect.ui" />
+    <QtMoc Include="ServerConnect.h" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="ServerConnect.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="Signup.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="signup.h" />
+    <QtMoc Include="Signup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

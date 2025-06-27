@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-#include <QTcpSocket>
+#include <QtcpSocket>
 
 namespace Ui {
     class Login;
@@ -15,12 +15,16 @@ public:
     explicit Login(QWidget* parent = nullptr, QTcpSocket* socket = nullptr);
     ~Login();
 
+    void setServerInfo(const QString& ip, quint16 port);
+
 private slots:
-    void OnLoginBtnClicked();
-    void OnSignupBtnClicked();
-    void OnExitBtnClicked();
+    void on_loginBtn_clicked();
+    void on_signupBtn_clicked();
+    void on_backBtn_clicked();
 
 private:
     Ui::Login* ui;
+    QString serverIp;
+    quint16 serverPort;
     QTcpSocket* socket;
 };

@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'signup.ui'
+** Form generated from reading UI file 'Signup.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.9.1
 **
@@ -12,11 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,56 +28,52 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QFormLayout *formLayout;
-    QLabel *label_id;
-    QLineEdit *idEdit;
-    QLabel *label_password;
-    QLineEdit *pwEdit;
-    QLabel *label_confirm;
+    QLabel *labelNickname;
+    QLineEdit *nicknameEdit;
+    QLabel *labelPassword;
+    QLineEdit *passwordEdit;
+    QLabel *labelConfirm;
     QLineEdit *confirmEdit;
-    QLabel *statusLabel;
+    QHBoxLayout *buttonLayout;
     QPushButton *signupBtn;
-    QPushButton *exitBtn;
-    QStatusBar *statusbar;
+    QPushButton *backBtn;
 
     void setupUi(QMainWindow *Signup)
     {
         if (Signup->objectName().isEmpty())
             Signup->setObjectName("Signup");
-        Signup->resize(400, 320);
+        Signup->resize(400, 300);
         centralwidget = new QWidget(Signup);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName("verticalLayout");
         formLayout = new QFormLayout();
-        formLayout->setSpacing(6);
         formLayout->setObjectName("formLayout");
-        label_id = new QLabel(centralwidget);
-        label_id->setObjectName("label_id");
+        labelNickname = new QLabel(centralwidget);
+        labelNickname->setObjectName("labelNickname");
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, label_id);
+        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, labelNickname);
 
-        idEdit = new QLineEdit(centralwidget);
-        idEdit->setObjectName("idEdit");
+        nicknameEdit = new QLineEdit(centralwidget);
+        nicknameEdit->setObjectName("nicknameEdit");
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, idEdit);
+        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, nicknameEdit);
 
-        label_password = new QLabel(centralwidget);
-        label_password->setObjectName("label_password");
+        labelPassword = new QLabel(centralwidget);
+        labelPassword->setObjectName("labelPassword");
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, label_password);
+        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, labelPassword);
 
-        pwEdit = new QLineEdit(centralwidget);
-        pwEdit->setObjectName("pwEdit");
-        pwEdit->setEchoMode(QLineEdit::Password);
+        passwordEdit = new QLineEdit(centralwidget);
+        passwordEdit->setObjectName("passwordEdit");
+        passwordEdit->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, pwEdit);
+        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, passwordEdit);
 
-        label_confirm = new QLabel(centralwidget);
-        label_confirm->setObjectName("label_confirm");
+        labelConfirm = new QLabel(centralwidget);
+        labelConfirm->setObjectName("labelConfirm");
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_confirm);
+        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, labelConfirm);
 
         confirmEdit = new QLineEdit(centralwidget);
         confirmEdit->setObjectName("confirmEdit");
@@ -88,25 +84,22 @@ public:
 
         verticalLayout->addLayout(formLayout);
 
-        statusLabel = new QLabel(centralwidget);
-        statusLabel->setObjectName("statusLabel");
-
-        verticalLayout->addWidget(statusLabel);
-
+        buttonLayout = new QHBoxLayout();
+        buttonLayout->setObjectName("buttonLayout");
         signupBtn = new QPushButton(centralwidget);
         signupBtn->setObjectName("signupBtn");
 
-        verticalLayout->addWidget(signupBtn);
+        buttonLayout->addWidget(signupBtn);
 
-        exitBtn = new QPushButton(centralwidget);
-        exitBtn->setObjectName("exitBtn");
+        backBtn = new QPushButton(centralwidget);
+        backBtn->setObjectName("backBtn");
 
-        verticalLayout->addWidget(exitBtn);
+        buttonLayout->addWidget(backBtn);
+
+
+        verticalLayout->addLayout(buttonLayout);
 
         Signup->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(Signup);
-        statusbar->setObjectName("statusbar");
-        Signup->setStatusBar(statusbar);
 
         retranslateUi(Signup);
 
@@ -116,13 +109,11 @@ public:
     void retranslateUi(QMainWindow *Signup)
     {
         Signup->setWindowTitle(QCoreApplication::translate("Signup", "\355\232\214\354\233\220\352\260\200\354\236\205", nullptr));
-        label_id->setText(QCoreApplication::translate("Signup", "ID", nullptr));
-        label_password->setText(QCoreApplication::translate("Signup", "\353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
-        label_confirm->setText(QCoreApplication::translate("Signup", "\353\271\204\353\260\200\353\262\210\355\230\270 \355\231\225\354\235\270", nullptr));
-        statusLabel->setText(QString());
-        statusLabel->setStyleSheet(QCoreApplication::translate("Signup", "color: red;", nullptr));
-        signupBtn->setText(QCoreApplication::translate("Signup", "\355\232\214\354\233\220\352\260\200\354\236\205", nullptr));
-        exitBtn->setText(QCoreApplication::translate("Signup", "\354\242\205\353\243\214", nullptr));
+        labelNickname->setText(QCoreApplication::translate("Signup", "\353\213\211\353\204\244\354\236\204", nullptr));
+        labelPassword->setText(QCoreApplication::translate("Signup", "\353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
+        labelConfirm->setText(QCoreApplication::translate("Signup", "\353\271\204\353\260\200\353\262\210\355\230\270 \355\231\225\354\235\270", nullptr));
+        signupBtn->setText(QCoreApplication::translate("Signup", "\355\231\225\354\235\270", nullptr));
+        backBtn->setText(QCoreApplication::translate("Signup", "\354\235\264\354\240\204", nullptr));
     } // retranslateUi
 
 };
