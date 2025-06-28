@@ -82,3 +82,20 @@ void Login::on_backBtn_clicked()
     serverConnectWindow->show();
     this->close();
 }
+
+void Login::resizeEvent(QResizeEvent* event) {
+    QWidget::resizeEvent(event);
+
+    int fontSize = width() / 40;
+
+    QFont font = ui->nicknameEdit->font();
+    font.setPointSize(fontSize);
+	ui->labelNickname->setFont(font);
+	ui->labelPassword->setFont(font);
+    ui->nicknameEdit->setFont(font);
+    ui->passwordEdit->setFont(font);
+    ui->loginBtn->setFont(font);
+    ui->signupBtn->setFont(font);
+	ui->backBtn->setFont(font);
+
+}

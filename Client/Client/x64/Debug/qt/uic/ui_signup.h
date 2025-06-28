@@ -42,7 +42,7 @@ public:
     {
         if (Signup->objectName().isEmpty())
             Signup->setObjectName("Signup");
-        Signup->resize(400, 300);
+        Signup->resize(500, 300);
         centralwidget = new QWidget(Signup);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -51,33 +51,51 @@ public:
         formLayout->setObjectName("formLayout");
         labelNickname = new QLabel(centralwidget);
         labelNickname->setObjectName("labelNickname");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(labelNickname->sizePolicy().hasHeightForWidth());
+        labelNickname->setSizePolicy(sizePolicy);
 
         formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, labelNickname);
 
         nicknameEdit = new QLineEdit(centralwidget);
         nicknameEdit->setObjectName("nicknameEdit");
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(nicknameEdit->sizePolicy().hasHeightForWidth());
+        nicknameEdit->setSizePolicy(sizePolicy1);
 
         formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, nicknameEdit);
 
         labelPassword = new QLabel(centralwidget);
         labelPassword->setObjectName("labelPassword");
+        sizePolicy.setHeightForWidth(labelPassword->sizePolicy().hasHeightForWidth());
+        labelPassword->setSizePolicy(sizePolicy);
 
         formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, labelPassword);
 
         passwordEdit = new QLineEdit(centralwidget);
         passwordEdit->setObjectName("passwordEdit");
-        passwordEdit->setEchoMode(QLineEdit::Password);
+        sizePolicy1.setHeightForWidth(passwordEdit->sizePolicy().hasHeightForWidth());
+        passwordEdit->setSizePolicy(sizePolicy1);
+        passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, passwordEdit);
 
         labelConfirm = new QLabel(centralwidget);
         labelConfirm->setObjectName("labelConfirm");
+        sizePolicy.setHeightForWidth(labelConfirm->sizePolicy().hasHeightForWidth());
+        labelConfirm->setSizePolicy(sizePolicy);
 
         formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, labelConfirm);
 
         confirmEdit = new QLineEdit(centralwidget);
         confirmEdit->setObjectName("confirmEdit");
-        confirmEdit->setEchoMode(QLineEdit::Password);
+        sizePolicy1.setHeightForWidth(confirmEdit->sizePolicy().hasHeightForWidth());
+        confirmEdit->setSizePolicy(sizePolicy1);
+        confirmEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, confirmEdit);
 
@@ -88,11 +106,21 @@ public:
         buttonLayout->setObjectName("buttonLayout");
         signupBtn = new QPushButton(centralwidget);
         signupBtn->setObjectName("signupBtn");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(signupBtn->sizePolicy().hasHeightForWidth());
+        signupBtn->setSizePolicy(sizePolicy2);
 
         buttonLayout->addWidget(signupBtn);
 
         backBtn = new QPushButton(centralwidget);
         backBtn->setObjectName("backBtn");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Ignored);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(backBtn->sizePolicy().hasHeightForWidth());
+        backBtn->setSizePolicy(sizePolicy3);
 
         buttonLayout->addWidget(backBtn);
 

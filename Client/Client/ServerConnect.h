@@ -18,6 +18,7 @@ public:
 private slots:
     void on_connectBtn_clicked();
     void on_exitBtn_clicked();
+    void resizeEvent(QResizeEvent* evnet);
 
 private:
     Ui::ServerConnect* ui;

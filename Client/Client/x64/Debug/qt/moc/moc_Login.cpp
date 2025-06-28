@@ -42,7 +42,10 @@ template <> constexpr inline auto Login::qt_create_metaobjectdata<qt_meta_tag_ZN
         "on_loginBtn_clicked",
         "",
         "on_signupBtn_clicked",
-        "on_backBtn_clicked"
+        "on_backBtn_clicked",
+        "resizeEvent",
+        "QResizeEvent*",
+        "evnet"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -52,6 +55,10 @@ template <> constexpr inline auto Login::qt_create_metaobjectdata<qt_meta_tag_ZN
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_backBtn_clicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'resizeEvent'
+        QtMocHelpers::SlotData<void(QResizeEvent *)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 6, 7 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -78,10 +85,10 @@ void Login::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 0: _t->on_loginBtn_clicked(); break;
         case 1: _t->on_signupBtn_clicked(); break;
         case 2: _t->on_backBtn_clicked(); break;
+        case 3: _t->resizeEvent((*reinterpret_cast< std::add_pointer_t<QResizeEvent*>>(_a[1]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *Login::metaObject() const
@@ -103,14 +110,14 @@ int Login::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

@@ -21,6 +21,7 @@ private slots:
     void on_loginBtn_clicked();
     void on_signupBtn_clicked();
     void on_backBtn_clicked();
+    void resizeEvent(QResizeEvent* evnet);
 
 private:
     Ui::Login* ui;

@@ -56,3 +56,19 @@ void ServerConnect::on_exitBtn_clicked()
 {
     this->close();
 }
+
+void ServerConnect::resizeEvent(QResizeEvent* event) {
+    QWidget::resizeEvent(event);
+
+    int fontSize = width() / 40;
+
+    QFont font = ui->ipEdit->font();
+    font.setPointSize(fontSize);
+	ui->labelIP->setFont(font);
+	ui->labelPort->setFont(font);
+    ui->ipEdit->setFont(font);
+    ui->portEdit->setFont(font);
+	ui->connectBtn->setFont(font);
+    ui->exitBtn->setFont(font);
+    ui->errorLabel->setFont(font);
+}

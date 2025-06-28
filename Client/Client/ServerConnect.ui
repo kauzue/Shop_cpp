@@ -1,82 +1,120 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-	<class>ServerConnect</class>
-	<widget class="QMainWindow" name="ServerConnect">
-		<property name="geometry">
-			<rect>
-				<x>0</x>
-				<y>0</y>
-				<width>360</width>
-				<height>180</height>
-			</rect>
-		</property>
-		<property name="windowTitle">
-			<string>서버 연결</string>
-		</property>
-		<widget class="QWidget" name="centralwidget">
-			<layout class="QGridLayout" name="gridLayout">
-				<item row="0" column="0" >
-					<widget class="QLabel" name="labelIP">
-						<property name="text">
-							<string>서버 IP:</string>
-						</property>
-					</widget>
-				</item>
-				<item row="0" column="1">
-					<widget class="QLineEdit" name="ipEdit"/>
-				</item>
-
-				<item row="1" column="0">
-					<widget class="QLabel" name="labelPort">
-						<property name="text">
-							<string>서버 포트:</string>
-						</property>
-					</widget>
-				</item>
-				<item row="1" column="1">
-					<widget class="QLineEdit" name="portEdit"/>
-				</item>
-
-				<!-- 서버 연결 실패 시 경고 메시지 표시용 레이블 -->
-				<item row="2" column="0" colspan="2">
-					<widget class="QLabel" name="errorLabel">
-						<property name="text">
-							<string></string>
-						</property>
-						<property name="visible">
-							<bool>false</bool>
-						</property>
-						<property name="styleSheet">
-							<string>color: red;</string>
-						</property>
-						<property name="alignment">
-							<set>Qt::AlignCenter</set>
-						</property>
-					</widget>
-				</item>
-
-				<item row="3" column="0" colspan="2" alignment="Qt::AlignCenter">
-					<layout class="QHBoxLayout" name="buttonLayout">
-						<item>
-							<widget class="QPushButton" name="connectBtn">
-								<property name="text">
-									<string>확인</string>
-								</property>
-							</widget>
-						</item>
-						<item>
-							<widget class="QPushButton" name="exitBtn">
-								<property name="text">
-									<string>종료</string>
-								</property>
-							</widget>
-						</item>
-					</layout>
-				</item>
-			</layout>
-		</widget>
-		<action name="actionConnect"/>
-	</widget>
-	<resources/>
-	<connections/>
+ <class>ServerConnect</class>
+ <widget class="QMainWindow" name="ServerConnect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>서버 연결</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="0" colspan="2">
+     <widget class="QLabel" name="errorLabel">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string>color: red;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="buttonLayout">
+      <item>
+       <widget class="QPushButton" name="connectBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>확인</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="exitBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>종료</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelIP">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>서버 IP</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelPort">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>서버 포트</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="ipEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="portEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionConnect"/>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

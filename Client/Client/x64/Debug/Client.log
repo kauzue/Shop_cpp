@@ -1,5 +1,6 @@
 ﻿   Qt/MSBuild: 3.4.0.1
    Qt: 6.9.1
   Login.cpp
+  ServerConnect.cpp
   Signup.cpp
   Client.vcxproj -> D:\개발\Shop_cpp\Client\x64\Debug\Client.exe
