@@ -2,6 +2,7 @@
 #include "ui_Login.h"
 #include "Signup.h"
 #include "ServerConnect.h"
+#include "MainMenu.h"
 #include <QMessageBox>
 
 Login::Login(QWidget* parent, QTcpSocket* socket)
@@ -40,11 +41,10 @@ void Login::on_loginBtn_clicked()
         if (response == "success") {
             QMessageBox::information(this, "로그인 성공", "로그인에 성공했습니다.");
 
-            //이거 수정해서 메인화면 띄우면 됨
-            /*Login* loginWindow = new Login(nullptr, socket);
-            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
-            loginWindow->show();
-            this->close();*/
+            MainMenu* MainMenuWindow = new MainMenu(nullptr, socket);
+            MainMenuWindow->setAttribute(Qt::WA_DeleteOnClose);
+            MainMenuWindow->show();
+            this->close();
         }
         else if (response == "success:admin") {
             QMessageBox::information(this, "관리자", "관리자 계정으로 로그인하였습니다.");
@@ -77,6 +77,10 @@ void Login::on_signupBtn_clicked()
 
 void Login::on_backBtn_clicked()
 {
+    socket->disconnectFromHost();
+    if (socket->state() != QAbstractSocket::UnconnectedState) {
+        socket->waitForDisconnected(3000);
+    }
     ServerConnect* serverConnectWindow = new ServerConnect;
     serverConnectWindow->setAttribute(Qt::WA_DeleteOnClose);
     serverConnectWindow->show();
@@ -97,5 +101,4 @@ void Login::resizeEvent(QResizeEvent* event) {
     ui->loginBtn->setFont(font);
     ui->signupBtn->setFont(font);
 	ui->backBtn->setFont(font);
-
 }

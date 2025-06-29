@@ -46,6 +46,7 @@ void ServerSocket::Accept() {
         SOCKET client = accept(serverSocket, nullptr, nullptr);
         if (client != INVALID_SOCKET) {
             std::thread t([client]() {
+				std::cout << "[클라이언트 연결됨] 소켓: " << client << std::endl;
                 ClientHandler handler(client);
                 handler();
                 });

@@ -10,7 +10,7 @@ ServerConnect::ServerConnect(QWidget* parent)
     ui->setupUi(this);
     ui->portEdit->setValidator(new QIntValidator(1, 65535, this));
     ui->errorLabel->setVisible(false);
-    socket = new QTcpSocket(this);
+    socket = new QTcpSocket();
 }
 
 ServerConnect::~ServerConnect()

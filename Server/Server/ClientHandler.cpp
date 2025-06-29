@@ -25,5 +25,6 @@ void ClientHandler::operator()() {
         }
     }
 
+    std::cout << "클라이언트 연결 종료" << std::endl;
     closesocket(clientSocket);
 }

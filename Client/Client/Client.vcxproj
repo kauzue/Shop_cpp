@@ -92,9 +92,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Signup.cpp" />
     <QtRcc Include="ServerConnect.qrc" />
     <QtUic Include="Login.ui" />
+    <QtUic Include="MainMenu.ui" />
     <QtUic Include="ServerConnect.ui" />
     <QtMoc Include="ServerConnect.h" />
     <ClCompile Include="Login.cpp" />
@@ -107,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Signup.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
