@@ -60,3 +60,8 @@ std::string UserManager::Login(const std::string& payload) {
     return "fail";
 }
 
+std::string UserManager::AddProduct(const std::string& payload)
+{
+
+}
+

@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -52,6 +53,23 @@ public:
     QPushButton *logoutBtn;
     QPushButton *deleteAccountBtn;
     QSpacerItem *bottomProfileSpacer;
+    QWidget *viewProductPage;
+    QVBoxLayout *viewProductLayout;
+    QVBoxLayout *productListLayout;
+    QHBoxLayout *hboxLayout;
+    QPushButton *product1Btn;
+    QPushButton *detail1Btn;
+    QHBoxLayout *hboxLayout1;
+    QPushButton *prevPageBtn;
+    QLabel *pageLabel;
+    QPushButton *nextPageBtn;
+    QWidget *addProductPage;
+    QVBoxLayout *addProductLayout;
+    QLineEdit *productNameEdit;
+    QLineEdit *productPriceEdit;
+    QLineEdit *productQuantityEdit;
+    QHBoxLayout *hboxLayout2;
+    QPushButton *confirmAddProductBtn;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -164,6 +182,82 @@ public:
         profileLayout->addItem(bottomProfileSpacer);
 
         contentStack->addWidget(profilePage);
+        viewProductPage = new QWidget();
+        viewProductPage->setObjectName("viewProductPage");
+        viewProductLayout = new QVBoxLayout(viewProductPage);
+        viewProductLayout->setObjectName("viewProductLayout");
+        productListLayout = new QVBoxLayout();
+        productListLayout->setObjectName("productListLayout");
+        hboxLayout = new QHBoxLayout();
+        hboxLayout->setObjectName("hboxLayout");
+        product1Btn = new QPushButton(viewProductPage);
+        product1Btn->setObjectName("product1Btn");
+
+        hboxLayout->addWidget(product1Btn);
+
+        detail1Btn = new QPushButton(viewProductPage);
+        detail1Btn->setObjectName("detail1Btn");
+
+        hboxLayout->addWidget(detail1Btn);
+
+
+        productListLayout->addLayout(hboxLayout);
+
+
+        viewProductLayout->addLayout(productListLayout);
+
+        hboxLayout1 = new QHBoxLayout();
+        hboxLayout1->setObjectName("hboxLayout1");
+        prevPageBtn = new QPushButton(viewProductPage);
+        prevPageBtn->setObjectName("prevPageBtn");
+
+        hboxLayout1->addWidget(prevPageBtn);
+
+        pageLabel = new QLabel(viewProductPage);
+        pageLabel->setObjectName("pageLabel");
+        pageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        hboxLayout1->addWidget(pageLabel);
+
+        nextPageBtn = new QPushButton(viewProductPage);
+        nextPageBtn->setObjectName("nextPageBtn");
+
+        hboxLayout1->addWidget(nextPageBtn);
+
+
+        viewProductLayout->addLayout(hboxLayout1);
+
+        contentStack->addWidget(viewProductPage);
+        addProductPage = new QWidget();
+        addProductPage->setObjectName("addProductPage");
+        addProductLayout = new QVBoxLayout(addProductPage);
+        addProductLayout->setObjectName("addProductLayout");
+        productNameEdit = new QLineEdit(addProductPage);
+        productNameEdit->setObjectName("productNameEdit");
+
+        addProductLayout->addWidget(productNameEdit);
+
+        productPriceEdit = new QLineEdit(addProductPage);
+        productPriceEdit->setObjectName("productPriceEdit");
+
+        addProductLayout->addWidget(productPriceEdit);
+
+        productQuantityEdit = new QLineEdit(addProductPage);
+        productQuantityEdit->setObjectName("productQuantityEdit");
+
+        addProductLayout->addWidget(productQuantityEdit);
+
+        hboxLayout2 = new QHBoxLayout();
+        hboxLayout2->setObjectName("hboxLayout2");
+        confirmAddProductBtn = new QPushButton(addProductPage);
+        confirmAddProductBtn->setObjectName("confirmAddProductBtn");
+
+        hboxLayout2->addWidget(confirmAddProductBtn);
+
+
+        addProductLayout->addLayout(hboxLayout2);
+
+        contentStack->addWidget(addProductPage);
 
         mainLayout->addWidget(contentStack);
 
@@ -181,7 +275,7 @@ public:
 
         retranslateUi(MainMenu);
 
-        contentStack->setCurrentIndex(0);
+        contentStack->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainMenu);
@@ -202,6 +296,15 @@ public:
         assetBtn->setText(QCoreApplication::translate("MainMenu", "\353\263\264\354\234\240 \354\236\220\354\202\260 \355\231\225\354\235\270", nullptr));
         logoutBtn->setText(QCoreApplication::translate("MainMenu", "\353\241\234\352\267\270\354\225\204\354\233\203", nullptr));
         deleteAccountBtn->setText(QCoreApplication::translate("MainMenu", "\352\263\204\354\240\225 \354\202\255\354\240\234", nullptr));
+        product1Btn->setText(QCoreApplication::translate("MainMenu", "\354\203\201\355\222\210 1", nullptr));
+        detail1Btn->setText(QCoreApplication::translate("MainMenu", "\354\203\201\354\204\270\354\240\225\353\263\264", nullptr));
+        prevPageBtn->setText(QCoreApplication::translate("MainMenu", "\354\235\264\354\240\204", nullptr));
+        pageLabel->setText(QCoreApplication::translate("MainMenu", "\355\216\230\354\235\264\354\247\200 1 / 1", nullptr));
+        nextPageBtn->setText(QCoreApplication::translate("MainMenu", "\353\213\244\354\235\214", nullptr));
+        productNameEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\354\203\201\355\222\210\353\252\205", nullptr));
+        productPriceEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\352\260\200\352\262\251", nullptr));
+        productQuantityEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\352\260\234\354\210\230", nullptr));
+        confirmAddProductBtn->setText(QCoreApplication::translate("MainMenu", "\355\231\225\354\235\270", nullptr));
     } // retranslateUi
 
 };

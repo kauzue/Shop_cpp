@@ -23,6 +23,11 @@ void ClientHandler::operator()() {
             std::string res = UserManager::Login(payload);
             send(clientSocket, res.c_str(), res.size(), 0);
         }
+        else if (msg.compare(0, 11, "addproduct:") == 0) {
+            std::string payload = msg.substr(11);
+            std::string res = UserMagager::AddProduct(payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
     }
 
     std::cout << "클라이언트 연결 종료" << std::endl;

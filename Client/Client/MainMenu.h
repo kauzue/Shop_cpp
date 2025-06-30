@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include <QTcpSocket>
 
+#define MAX_INT 2147483647
+
 namespace Ui {
     class MainMenu;
 }
@@ -21,9 +23,8 @@ private slots:
     void on_addProductBtn_clicked();
     void on_friendBtn_clicked();
     void on_profileBtn_clicked();
-	void on_changeIDBtn_clicked();
-	void on_changePWBtn_clicked();
-	void on_logoutBtn_clicked();
+	void on_changeIdBtn_clicked();
+	void on_changePwBtn_clicked();
     void on_assetBtn_clicked();
     void on_logoutBtn_clicked();
     void on_deleteAccountBtn_clicked();

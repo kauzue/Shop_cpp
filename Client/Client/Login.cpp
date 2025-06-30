@@ -39,7 +39,6 @@ void Login::on_loginBtn_clicked()
     if (socket->waitForReadyRead(3000)) {
         QString response = QString::fromUtf8(socket->readAll()).trimmed();
         if (response == "success") {
-            QMessageBox::information(this, "로그인 성공", "로그인에 성공했습니다.");
 
             MainMenu* MainMenuWindow = new MainMenu(nullptr, socket);
             MainMenuWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -47,7 +46,6 @@ void Login::on_loginBtn_clicked()
             this->close();
         }
         else if (response == "success:admin") {
-            QMessageBox::information(this, "관리자", "관리자 계정으로 로그인하였습니다.");
 
             //이거 수정해서 관리자 화면 띄우면 됨
             /*Login* loginWindow = new Login(nullptr, socket);

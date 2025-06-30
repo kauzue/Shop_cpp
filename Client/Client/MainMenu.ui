@@ -68,7 +68,7 @@
       <item>
        <widget class="QStackedWidget" name="contentStack">
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="productPage">
          <layout class="QVBoxLayout" name="productLayout">
@@ -176,6 +176,96 @@
              </size>
             </property>
            </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="viewProductPage">
+         <layout class="QVBoxLayout" name="viewProductLayout">
+          <item>
+           <layout class="QVBoxLayout" name="productListLayout">
+            <item>
+             <layout class="QHBoxLayout">
+              <item>
+               <widget class="QPushButton" name="product1Btn">
+                <property name="text">
+                 <string>상품 1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="detail1Btn">
+                <property name="text">
+                 <string>상세정보</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QPushButton" name="prevPageBtn">
+              <property name="text">
+               <string>이전</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="pageLabel">
+              <property name="text">
+               <string>페이지 1 / 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="nextPageBtn">
+              <property name="text">
+               <string>다음</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="addProductPage">
+         <layout class="QVBoxLayout" name="addProductLayout">
+          <item>
+           <widget class="QLineEdit" name="productNameEdit">
+            <property name="placeholderText">
+             <string>상품명</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="productPriceEdit">
+            <property name="placeholderText">
+             <string>가격</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="productQuantityEdit">
+            <property name="placeholderText">
+             <string>개수</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QPushButton" name="confirmAddProductBtn">
+              <property name="text">
+               <string>확인</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
