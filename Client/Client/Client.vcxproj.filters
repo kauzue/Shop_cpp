@@ -71,5 +71,8 @@
     <QtUic Include="MainMenu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Admin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

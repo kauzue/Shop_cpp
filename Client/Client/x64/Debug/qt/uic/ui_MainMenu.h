@@ -57,9 +57,6 @@ public:
     QVBoxLayout *viewProductLayout;
     QVBoxLayout *productListLayout;
     QHBoxLayout *hboxLayout;
-    QPushButton *product1Btn;
-    QPushButton *detail1Btn;
-    QHBoxLayout *hboxLayout1;
     QPushButton *prevPageBtn;
     QLabel *pageLabel;
     QPushButton *nextPageBtn;
@@ -98,7 +95,7 @@ public:
         font.setPointSize(20);
         font.setBold(true);
         titleLabel->setFont(font);
-        titleLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        titleLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(titleLabel);
 
@@ -198,44 +195,29 @@ public:
         viewProductLayout->setObjectName("viewProductLayout");
         productListLayout = new QVBoxLayout();
         productListLayout->setObjectName("productListLayout");
-        hboxLayout = new QHBoxLayout();
-        hboxLayout->setObjectName("hboxLayout");
-        product1Btn = new QPushButton(viewProductPage);
-        product1Btn->setObjectName("product1Btn");
-
-        hboxLayout->addWidget(product1Btn);
-
-        detail1Btn = new QPushButton(viewProductPage);
-        detail1Btn->setObjectName("detail1Btn");
-
-        hboxLayout->addWidget(detail1Btn);
-
-
-        productListLayout->addLayout(hboxLayout);
-
 
         viewProductLayout->addLayout(productListLayout);
 
-        hboxLayout1 = new QHBoxLayout();
-        hboxLayout1->setObjectName("hboxLayout1");
+        hboxLayout = new QHBoxLayout();
+        hboxLayout->setObjectName("hboxLayout");
         prevPageBtn = new QPushButton(viewProductPage);
         prevPageBtn->setObjectName("prevPageBtn");
 
-        hboxLayout1->addWidget(prevPageBtn);
+        hboxLayout->addWidget(prevPageBtn);
 
         pageLabel = new QLabel(viewProductPage);
         pageLabel->setObjectName("pageLabel");
-        pageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        pageLabel->setAlignment(Qt::AlignCenter);
 
-        hboxLayout1->addWidget(pageLabel);
+        hboxLayout->addWidget(pageLabel);
 
         nextPageBtn = new QPushButton(viewProductPage);
         nextPageBtn->setObjectName("nextPageBtn");
 
-        hboxLayout1->addWidget(nextPageBtn);
+        hboxLayout->addWidget(nextPageBtn);
 
 
-        viewProductLayout->addLayout(hboxLayout1);
+        viewProductLayout->addLayout(hboxLayout);
 
         contentStack->addWidget(viewProductPage);
         addProductPage = new QWidget();
@@ -284,7 +266,7 @@ public:
         changePwLayout->setObjectName("changePwLayout");
         newPwEdit = new QLineEdit(changePwPage);
         newPwEdit->setObjectName("newPwEdit");
-        newPwEdit->setEchoMode(QLineEdit::EchoMode::Password);
+        newPwEdit->setEchoMode(QLineEdit::Password);
 
         changePwLayout->addWidget(newPwEdit);
 
@@ -300,7 +282,7 @@ public:
         assetLayout->setObjectName("assetLayout");
         assetLabel = new QLabel(assetPage);
         assetLabel->setObjectName("assetLabel");
-        assetLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        assetLabel->setAlignment(Qt::AlignCenter);
 
         assetLayout->addWidget(assetLabel);
 
@@ -343,8 +325,6 @@ public:
         assetBtn->setText(QCoreApplication::translate("MainMenu", "\353\263\264\354\234\240 \354\236\220\354\202\260 \355\231\225\354\235\270", nullptr));
         logoutBtn->setText(QCoreApplication::translate("MainMenu", "\353\241\234\352\267\270\354\225\204\354\233\203", nullptr));
         deleteAccountBtn->setText(QCoreApplication::translate("MainMenu", "\352\263\204\354\240\225 \354\202\255\354\240\234", nullptr));
-        product1Btn->setText(QCoreApplication::translate("MainMenu", "\354\203\201\355\222\210 1", nullptr));
-        detail1Btn->setText(QCoreApplication::translate("MainMenu", "\354\203\201\354\204\270\354\240\225\353\263\264", nullptr));
         prevPageBtn->setText(QCoreApplication::translate("MainMenu", "\354\235\264\354\240\204", nullptr));
         pageLabel->setText(QCoreApplication::translate("MainMenu", "\355\216\230\354\235\264\354\247\200 1 / 1", nullptr));
         nextPageBtn->setText(QCoreApplication::translate("MainMenu", "\353\213\244\354\235\214", nullptr));

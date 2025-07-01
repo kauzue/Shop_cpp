@@ -192,8 +192,6 @@ void MainMenu::resizeEvent(QResizeEvent* event)
 	ui->nextPageBtn->setFont(font);
 	ui->pageLabel->setFont(font);
 	ui->prevPageBtn->setFont(font);
-	ui->detail1Btn->setFont(font);
-	ui->product1Btn->setFont(font);
     ui->addProductBtn->setFont(font);
 	ui->productNameEdit->setFont(font);
 	ui->productPriceEdit->setFont(font);

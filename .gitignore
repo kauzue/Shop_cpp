@@ -1,3 +1,8 @@
 .vs/
 Client/.vs/
+Client/x64/Debug/Client.exe
 Server/.vs/
+Server/x64/Debug/admin.txt
+Server/x64/Debug/product.csv
+Server/x64/Debug/Server.exe
+Server/x64/Debug/user.csv
