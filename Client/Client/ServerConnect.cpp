@@ -21,7 +21,7 @@ ServerConnect::~ServerConnect()
 void ServerConnect::on_connectBtn_clicked()
 {
     QString ip = ui->ipEdit->text().trimmed();
-    QString portStr = ui->portEdit->text().trimmed();
+    QString portStr = ui->portEdit->text();
 
     if (ip.isEmpty() || portStr.isEmpty()) {
         ui->errorLabel->setText("IP와 포트를 모두 입력하세요.");

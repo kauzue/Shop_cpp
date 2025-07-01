@@ -43,10 +43,13 @@ template <> constexpr inline auto MainMenu::qt_create_metaobjectdata<qt_meta_tag
         "",
         "on_viewProductBtn_clicked",
         "on_addProductBtn_clicked",
+        "on_confirmAddProductBtn_clicked",
         "on_friendBtn_clicked",
         "on_profileBtn_clicked",
         "on_changeIdBtn_clicked",
+        "on_confirmChangeIdBtn_clicked",
         "on_changePwBtn_clicked",
+        "on_confirmChangePwBtn_clicked",
         "on_assetBtn_clicked",
         "on_logoutBtn_clicked",
         "on_deleteAccountBtn_clicked",
@@ -63,25 +66,31 @@ template <> constexpr inline auto MainMenu::qt_create_metaobjectdata<qt_meta_tag
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_addProductBtn_clicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_friendBtn_clicked'
+        // Slot 'on_confirmAddProductBtn_clicked'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_profileBtn_clicked'
+        // Slot 'on_friendBtn_clicked'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_changeIdBtn_clicked'
+        // Slot 'on_profileBtn_clicked'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_changePwBtn_clicked'
+        // Slot 'on_changeIdBtn_clicked'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_assetBtn_clicked'
+        // Slot 'on_confirmChangeIdBtn_clicked'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_logoutBtn_clicked'
+        // Slot 'on_changePwBtn_clicked'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_deleteAccountBtn_clicked'
+        // Slot 'on_confirmChangePwBtn_clicked'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_exitBtn_clicked'
+        // Slot 'on_assetBtn_clicked'
         QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_logoutBtn_clicked'
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_deleteAccountBtn_clicked'
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_exitBtn_clicked'
+        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'resizeEvent'
-        QtMocHelpers::SlotData<void(QResizeEvent *)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 14, 15 },
+        QtMocHelpers::SlotData<void(QResizeEvent *)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 17, 18 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -109,15 +118,18 @@ void MainMenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 0: _t->on_productBtn_clicked(); break;
         case 1: _t->on_viewProductBtn_clicked(); break;
         case 2: _t->on_addProductBtn_clicked(); break;
-        case 3: _t->on_friendBtn_clicked(); break;
-        case 4: _t->on_profileBtn_clicked(); break;
-        case 5: _t->on_changeIdBtn_clicked(); break;
-        case 6: _t->on_changePwBtn_clicked(); break;
-        case 7: _t->on_assetBtn_clicked(); break;
-        case 8: _t->on_logoutBtn_clicked(); break;
-        case 9: _t->on_deleteAccountBtn_clicked(); break;
-        case 10: _t->on_exitBtn_clicked(); break;
-        case 11: _t->resizeEvent((*reinterpret_cast< std::add_pointer_t<QResizeEvent*>>(_a[1]))); break;
+        case 3: _t->on_confirmAddProductBtn_clicked(); break;
+        case 4: _t->on_friendBtn_clicked(); break;
+        case 5: _t->on_profileBtn_clicked(); break;
+        case 6: _t->on_changeIdBtn_clicked(); break;
+        case 7: _t->on_confirmChangeIdBtn_clicked(); break;
+        case 8: _t->on_changePwBtn_clicked(); break;
+        case 9: _t->on_confirmChangePwBtn_clicked(); break;
+        case 10: _t->on_assetBtn_clicked(); break;
+        case 11: _t->on_logoutBtn_clicked(); break;
+        case 12: _t->on_deleteAccountBtn_clicked(); break;
+        case 13: _t->on_exitBtn_clicked(); break;
+        case 14: _t->resizeEvent((*reinterpret_cast< std::add_pointer_t<QResizeEvent*>>(_a[1]))); break;
         default: ;
         }
     }
@@ -142,14 +154,14 @@ int MainMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 15;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 15)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 12;
+        _id -= 15;
     }
     return _id;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <winsock2.h>
+#include <string>
 
 class ClientHandler {
 public:
@@ -7,4 +8,5 @@ public:
     void operator()();
 private:
     SOCKET clientSocket;
+    std::string Id;
 };

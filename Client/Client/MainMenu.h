@@ -21,10 +21,13 @@ private slots:
     void on_productBtn_clicked();
     void on_viewProductBtn_clicked();
     void on_addProductBtn_clicked();
+    void on_confirmAddProductBtn_clicked();
     void on_friendBtn_clicked();
     void on_profileBtn_clicked();
 	void on_changeIdBtn_clicked();
+	void on_confirmChangeIdBtn_clicked();
 	void on_changePwBtn_clicked();
+	void on_confirmChangePwBtn_clicked();
     void on_assetBtn_clicked();
     void on_logoutBtn_clicked();
     void on_deleteAccountBtn_clicked();

@@ -42,26 +42,32 @@ void MainMenu::on_viewProductBtn_clicked()
 
 void MainMenu::on_addProductBtn_clicked()
 {
-    QString productName = ui->productNameEdit->text().trimmed();
-    QString productPrice = ui->productPriceEdit->text().trimmed();
-    QString productQuantity = ui->productQuantityEdit->text().trimmed();
-
     ui->contentStack->setCurrentWidget(ui->addProductPage);
+}
 
-    if(productName.isEmpty() || productPrice.isEmpty() || productQuantity.isEmpty()) {
-        QMessageBox::warning(this, "�Է� ����", "��� �׸��� �Է��ϼ���.");
+void MainMenu::on_confirmAddProductBtn_clicked()
+{
+    QString productName = ui->productNameEdit->text().trimmed();
+    QString productPrice = ui->productPriceEdit->text();
+    QString productQuantity = ui->productQuantityEdit->text();
+
+    if (productName.isEmpty() || productPrice.isEmpty() || productQuantity.isEmpty()) {
+        QMessageBox::warning(this, "오류", "모든 항목을 입력하세요");
         return;
-	}
+    }
 
-	QString msg = "addproduct:" + productName + ":" + productPrice + ":" + productQuantity;
+    QString msg = "addproduct:" + productName + ":" + productPrice + ":" + productQuantity;
     socket->write(msg.toUtf8());
     socket->flush();
 
     if (socket->waitForReadyRead(3000)) {
         QString response = QString::fromUtf8(socket->readAll()).trimmed();
         if (response == "success") {
-            QMessageBox::information(this, "����", "��ǰ�� �߰��Ǿ����ϴ�.");
+            QMessageBox::information(this, "성공", "상품이 추가되었습니다.");
             ui->contentStack->hide();
+        }
+        else {
+            QMessageBox::warning(this, "오류", "오류 : " + response);
         }
     }
 }
@@ -87,17 +93,67 @@ void MainMenu::on_profileBtn_clicked()
 
 void MainMenu::on_changeIdBtn_clicked()
 {
-	ui->contentStack->hide();
+	ui->contentStack->setCurrentWidget(ui->changeIdPage);
+}
+
+void MainMenu::on_confirmChangeIdBtn_clicked()
+{
+    QString newId = ui->newIdEdit->text().trimmed();
+
+    if (newId.isEmpty()) {
+        QMessageBox::warning(this, "오류", "모든 항목을 입력하세요");
+        return;
+    }
+
+    QString msg = "changeId:" + newId;
+    socket->write(msg.toUtf8());
+    socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+        QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        if (response == "success") {
+            QMessageBox::information(this, "성공", "아이디가 변경되었습니다.");
+            ui->contentStack->hide();
+        }
+        else {
+            QMessageBox::warning(this, "오류", "오류 : " + response);
+        }
+    }
 }
 
 void MainMenu::on_changePwBtn_clicked()
 {
-	ui->contentStack->hide();
+	ui->contentStack->setCurrentWidget(ui->changePwPage);
+}
+
+void MainMenu::on_confirmChangePwBtn_clicked()
+{
+    QString newPw = ui->newPwEdit->text().trimmed();
+
+    if (newPw.isEmpty()) {
+        QMessageBox::warning(this, "오류", "모든 항목을 입력하세요");
+        return;
+    }
+
+    QString msg = "changePw:" + newPw;
+    socket->write(msg.toUtf8());
+    socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+        QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        if (response == "success") {
+            QMessageBox::information(this, "성공", "비밀번호가 변경되었습니다.");
+            ui->contentStack->hide();
+        }
+        else {
+            QMessageBox::warning(this, "오류", "오류 : " + response);
+        }
+    }
 }
 
 void MainMenu::on_assetBtn_clicked()
 {
-	ui->contentStack->hide();
+	ui->contentStack->setCurrentWidget(ui->assetPage);
 }
 
 void MainMenu::on_logoutBtn_clicked()
@@ -146,8 +202,13 @@ void MainMenu::resizeEvent(QResizeEvent* event)
     ui->friendBtn->setFont(font);
     ui->profileBtn->setFont(font);
     ui->changeIdBtn->setFont(font);
+	ui->newIdEdit->setFont(font);
+	ui->confirmChangeIdBtn->setFont(font);
     ui->changePwBtn->setFont(font);
+    ui->newPwEdit->setFont(font);
+    ui->confirmChangePwBtn->setFont(font);
     ui->assetBtn->setFont(font);
+	ui->assetLabel->setFont(font);
     ui->logoutBtn->setFont(font);
     ui->deleteAccountBtn->setFont(font);
     ui->exitBtn->setFont(font);

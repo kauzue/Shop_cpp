@@ -22,10 +22,30 @@ void ClientHandler::operator()() {
             std::string payload = msg.substr(6);
             std::string res = UserManager::Login(payload);
             send(clientSocket, res.c_str(), res.size(), 0);
+            if (res == "success" || res == "success:admin") {
+                size_t sep = payload.find(':');
+                if (sep != std::string::npos) {
+					Id = payload.substr(0, sep);
+                    std::cout << Id << std::endl;
+                }
+            }
         }
         else if (msg.compare(0, 11, "addproduct:") == 0) {
             std::string payload = msg.substr(11);
-            std::string res = UserMagager::AddProduct(payload);
+            std::string res = UserManager::AddProduct(Id, payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
+        else if (msg.compare(0, 9, "changeId:") == 0) {
+            std::string payload = msg.substr(9);
+            std::string res = UserManager::ChangeId(Id, payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+            if (res == "success") {
+                Id = payload;
+            }
+        }
+        else if (msg.compare(0, 9, "changePw:") == 0) {
+            std::string payload = msg.substr(9);
+            std::string res = UserManager::ChangePw(Id, payload);
             send(clientSocket, res.c_str(), res.size(), 0);
         }
     }

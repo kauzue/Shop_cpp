@@ -68,7 +68,7 @@
       <item>
        <widget class="QStackedWidget" name="contentStack">
         <property name="currentIndex">
-         <number>3</number>
+         <number>6</number>
         </property>
         <widget class="QWidget" name="productPage">
          <layout class="QVBoxLayout" name="productLayout">
@@ -257,15 +257,64 @@
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout">
-            <item>
-             <widget class="QPushButton" name="confirmAddProductBtn">
-              <property name="text">
-               <string>확인</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="confirmAddProductBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="changeIdPage">
+         <layout class="QVBoxLayout" name="changeIdLayout">
+          <item>
+           <widget class="QLineEdit" name="newIdEdit">
+            <property name="placeholderText">
+             <string>새 아이디</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmChangeIdBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="changePwPage">
+         <layout class="QVBoxLayout" name="changePwLayout">
+          <item>
+           <widget class="QLineEdit" name="newPwEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::EchoMode::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>새 비밀번호</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmChangePwBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="assetPage">
+         <layout class="QVBoxLayout" name="assetLayout">
+          <item>
+           <widget class="QLabel" name="assetLabel">
+            <property name="text">
+             <string>보유 자산 :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

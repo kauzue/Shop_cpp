@@ -68,8 +68,18 @@ public:
     QLineEdit *productNameEdit;
     QLineEdit *productPriceEdit;
     QLineEdit *productQuantityEdit;
-    QHBoxLayout *hboxLayout2;
     QPushButton *confirmAddProductBtn;
+    QWidget *changeIdPage;
+    QVBoxLayout *changeIdLayout;
+    QLineEdit *newIdEdit;
+    QPushButton *confirmChangeIdBtn;
+    QWidget *changePwPage;
+    QVBoxLayout *changePwLayout;
+    QLineEdit *newPwEdit;
+    QPushButton *confirmChangePwBtn;
+    QWidget *assetPage;
+    QVBoxLayout *assetLayout;
+    QLabel *assetLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -247,17 +257,54 @@ public:
 
         addProductLayout->addWidget(productQuantityEdit);
 
-        hboxLayout2 = new QHBoxLayout();
-        hboxLayout2->setObjectName("hboxLayout2");
         confirmAddProductBtn = new QPushButton(addProductPage);
         confirmAddProductBtn->setObjectName("confirmAddProductBtn");
 
-        hboxLayout2->addWidget(confirmAddProductBtn);
-
-
-        addProductLayout->addLayout(hboxLayout2);
+        addProductLayout->addWidget(confirmAddProductBtn);
 
         contentStack->addWidget(addProductPage);
+        changeIdPage = new QWidget();
+        changeIdPage->setObjectName("changeIdPage");
+        changeIdLayout = new QVBoxLayout(changeIdPage);
+        changeIdLayout->setObjectName("changeIdLayout");
+        newIdEdit = new QLineEdit(changeIdPage);
+        newIdEdit->setObjectName("newIdEdit");
+
+        changeIdLayout->addWidget(newIdEdit);
+
+        confirmChangeIdBtn = new QPushButton(changeIdPage);
+        confirmChangeIdBtn->setObjectName("confirmChangeIdBtn");
+
+        changeIdLayout->addWidget(confirmChangeIdBtn);
+
+        contentStack->addWidget(changeIdPage);
+        changePwPage = new QWidget();
+        changePwPage->setObjectName("changePwPage");
+        changePwLayout = new QVBoxLayout(changePwPage);
+        changePwLayout->setObjectName("changePwLayout");
+        newPwEdit = new QLineEdit(changePwPage);
+        newPwEdit->setObjectName("newPwEdit");
+        newPwEdit->setEchoMode(QLineEdit::EchoMode::Password);
+
+        changePwLayout->addWidget(newPwEdit);
+
+        confirmChangePwBtn = new QPushButton(changePwPage);
+        confirmChangePwBtn->setObjectName("confirmChangePwBtn");
+
+        changePwLayout->addWidget(confirmChangePwBtn);
+
+        contentStack->addWidget(changePwPage);
+        assetPage = new QWidget();
+        assetPage->setObjectName("assetPage");
+        assetLayout = new QVBoxLayout(assetPage);
+        assetLayout->setObjectName("assetLayout");
+        assetLabel = new QLabel(assetPage);
+        assetLabel->setObjectName("assetLabel");
+        assetLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        assetLayout->addWidget(assetLabel);
+
+        contentStack->addWidget(assetPage);
 
         mainLayout->addWidget(contentStack);
 
@@ -275,7 +322,7 @@ public:
 
         retranslateUi(MainMenu);
 
-        contentStack->setCurrentIndex(3);
+        contentStack->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(MainMenu);
@@ -305,6 +352,11 @@ public:
         productPriceEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\352\260\200\352\262\251", nullptr));
         productQuantityEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\352\260\234\354\210\230", nullptr));
         confirmAddProductBtn->setText(QCoreApplication::translate("MainMenu", "\355\231\225\354\235\270", nullptr));
+        newIdEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\354\203\210 \354\225\204\354\235\264\353\224\224", nullptr));
+        confirmChangeIdBtn->setText(QCoreApplication::translate("MainMenu", "\355\231\225\354\235\270", nullptr));
+        newPwEdit->setPlaceholderText(QCoreApplication::translate("MainMenu", "\354\203\210 \353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
+        confirmChangePwBtn->setText(QCoreApplication::translate("MainMenu", "\355\231\225\354\235\270", nullptr));
+        assetLabel->setText(QCoreApplication::translate("MainMenu", "\353\263\264\354\234\240 \354\236\220\354\202\260 :", nullptr));
     } // retranslateUi
 
 };
