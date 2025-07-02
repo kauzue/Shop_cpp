@@ -40,6 +40,16 @@ void MainMenu::on_viewProductBtn_clicked()
     ui->contentStack->setCurrentWidget(ui->viewProductPage);
 }
 
+void MainMenu::on_prevPageBtn_clicked()
+{
+
+}
+
+void MainMenu::on_nextPageBtn_clicked()
+{
+
+}
+
 void MainMenu::on_addProductBtn_clicked()
 {
     ui->contentStack->setCurrentWidget(ui->addProductPage);
@@ -167,6 +177,24 @@ void MainMenu::on_logoutBtn_clicked()
 void MainMenu::on_deleteAccountBtn_clicked()
 {
     ui->contentStack->hide();
+    QString msg = "deleteaccount";
+    socket->write(msg.toUtf8());
+    socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+        QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        if (response == "success") {
+            QMessageBox::information(this, "성공", "계정을 삭제하였습니다.");
+            Login* loginWindow = new Login(nullptr, socket);
+            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
+            loginWindow->setWindowTitle("로그인 - " + ip + ":" + QString::number(port));
+            loginWindow->show();
+            this->close();
+        }
+        else {
+            QMessageBox::warning(this, "오류", "오류 : " + response);
+        }
+    }
 }
 
 void MainMenu::on_exitBtn_clicked()

@@ -187,3 +187,48 @@ std::string UserManager::ChangePw(const std::string& Id, const std::string& payl
     out.close();
     return "success";
 }
+
+std::string UserManager::DeleteAccount(const std::string& Id, const std::string& payload)
+{
+    std::ifstream in("user.csv");
+    if (!in.is_open()) {
+        return "error";
+    }
+
+    std::vector<std::tuple<std::string, std::string, std::string>> users;
+    std::string line;
+    bool found = false;
+
+    while (std::getline(in, line)) {
+        std::stringstream ss(line);
+        std::string storedId, storedHash, storedAsset;
+        std::getline(ss, storedId, ',');
+        std::getline(ss, storedHash, ',');
+        std::getline(ss, storedAsset);
+
+        if (storedId == Id) {
+            found = true;
+        }
+        else {
+            users.emplace_back(storedId, storedHash, storedAsset);
+        }
+    }
+
+    in.close();
+
+    if (!found) {
+        return "error";
+    }
+
+    std::ofstream out("user.csv", std::ios::trunc);
+    if (!out.is_open()) {
+        return "error";
+    }
+
+    for (const auto& user : users) {
+        out << std::get<0>(user) << "," << std::get<1>(user) << "," << std::get<2>(user) << "\n";
+    }
+
+    out.close();
+    return "success";
+}

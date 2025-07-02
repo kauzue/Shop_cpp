@@ -8,4 +8,5 @@ public:
     static std::string AddProduct(const std::string& Id, const std::string& payload);
     static std::string ChangeId(const std::string& Id, const std::string& payload);
     static std::string ChangePw(const std::string& Id, const std::string& payload);
+    static std::string DeleteAccount(const std::string& Id, const std::string& payload);
 };

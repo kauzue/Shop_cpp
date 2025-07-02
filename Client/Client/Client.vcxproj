@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdminMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Signup.cpp" />
     <QtRcc Include="ServerConnect.qrc" />
@@ -113,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="AdminMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

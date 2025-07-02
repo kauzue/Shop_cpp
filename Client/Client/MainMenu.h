@@ -20,6 +20,8 @@ public:
 private slots:
     void on_productBtn_clicked();
     void on_viewProductBtn_clicked();
+    void on_prevPageBtn_clicked();
+    void on_nextPageBtn_clicked();
     void on_addProductBtn_clicked();
     void on_confirmAddProductBtn_clicked();
     void on_friendBtn_clicked();

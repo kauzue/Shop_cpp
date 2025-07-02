@@ -48,6 +48,11 @@ void ClientHandler::operator()() {
             std::string res = UserManager::ChangePw(Id, payload);
             send(clientSocket, res.c_str(), res.size(), 0);
         }
+        else if (msg.compare(0, 13, "deleteaccount") == 0) {
+            std::string payload = msg;
+            std::string res = UserManager::DeleteAccount(Id, payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
     }
 
     std::cout << "클라이언트 연결 종료" << std::endl;
