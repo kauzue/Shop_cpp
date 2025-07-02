@@ -24,7 +24,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Admin
+class Ui_AdminMenu
 {
 public:
     QWidget *centralwidget;
@@ -56,12 +56,12 @@ public:
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
-    void setupUi(QMainWindow *Admin)
+    void setupUi(QMainWindow *AdminMenu)
     {
-        if (Admin->objectName().isEmpty())
-            Admin->setObjectName("Admin");
-        Admin->resize(1000, 600);
-        centralwidget = new QWidget(Admin);
+        if (AdminMenu->objectName().isEmpty())
+            AdminMenu->setObjectName("AdminMenu");
+        AdminMenu->resize(1000, 600);
+        centralwidget = new QWidget(AdminMenu);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName("verticalLayout");
@@ -71,7 +71,7 @@ public:
         font.setPointSize(20);
         font.setBold(true);
         titleLabel->setFont(font);
-        titleLabel->setAlignment(Qt::AlignCenter);
+        titleLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(titleLabel);
 
@@ -132,7 +132,7 @@ public:
 
         userPageLabel = new QLabel(userListPage);
         userPageLabel->setObjectName("userPageLabel");
-        userPageLabel->setAlignment(Qt::AlignCenter);
+        userPageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         pageControlLayout->addWidget(userPageLabel);
 
@@ -156,7 +156,7 @@ public:
 
         userPwEdit = new QLineEdit(changeUserPage);
         userPwEdit->setObjectName("userPwEdit");
-        userPwEdit->setEchoMode(QLineEdit::Password);
+        userPwEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         changeUserLayout->addWidget(userPwEdit);
 
@@ -177,44 +177,45 @@ public:
 
         verticalLayout->addLayout(mainLayout);
 
-        Admin->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(Admin);
+        AdminMenu->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(AdminMenu);
         menubar->setObjectName("menubar");
-        Admin->setMenuBar(menubar);
-        statusbar = new QStatusBar(Admin);
+        menubar->setGeometry(QRect(0, 0, 1000, 21));
+        AdminMenu->setMenuBar(menubar);
+        statusbar = new QStatusBar(AdminMenu);
         statusbar->setObjectName("statusbar");
-        Admin->setStatusBar(statusbar);
+        AdminMenu->setStatusBar(statusbar);
 
-        retranslateUi(Admin);
+        retranslateUi(AdminMenu);
 
         contentStack->setCurrentIndex(0);
 
 
-        QMetaObject::connectSlotsByName(Admin);
+        QMetaObject::connectSlotsByName(AdminMenu);
     } // setupUi
 
-    void retranslateUi(QMainWindow *Admin)
+    void retranslateUi(QMainWindow *AdminMenu)
     {
-        Admin->setWindowTitle(QCoreApplication::translate("Admin", "\352\264\200\353\246\254\354\236\220 \353\251\224\353\211\264", nullptr));
-        titleLabel->setText(QCoreApplication::translate("Admin", "\352\264\200\353\246\254\354\236\220 \355\216\230\354\235\264\354\247\200", nullptr));
-        manageUserBtn->setText(QCoreApplication::translate("Admin", "\354\202\254\354\232\251\354\236\220 \352\264\200\353\246\254", nullptr));
-        logoutBtn->setText(QCoreApplication::translate("Admin", "\353\241\234\352\267\270\354\225\204\354\233\203", nullptr));
-        exitBtn->setText(QCoreApplication::translate("Admin", "\354\242\205\353\243\214", nullptr));
-        viewUserListBtn->setText(QCoreApplication::translate("Admin", "\354\202\254\354\232\251\354\236\220 \353\252\251\353\241\235", nullptr));
-        modifyUserBtn->setText(QCoreApplication::translate("Admin", "\354\202\254\354\232\251\354\236\220 \354\210\230\354\240\225", nullptr));
-        prevUserPageBtn->setText(QCoreApplication::translate("Admin", "\354\235\264\354\240\204", nullptr));
-        userPageLabel->setText(QCoreApplication::translate("Admin", "\355\216\230\354\235\264\354\247\200 1 / 1", nullptr));
-        nextUserPageBtn->setText(QCoreApplication::translate("Admin", "\353\213\244\354\235\214", nullptr));
-        userIdEdit->setPlaceholderText(QCoreApplication::translate("Admin", "\354\210\230\354\240\225\355\225\240 \354\225\204\354\235\264\353\224\224", nullptr));
-        userPwEdit->setPlaceholderText(QCoreApplication::translate("Admin", "\354\203\210 \353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
-        userAssetEdit->setPlaceholderText(QCoreApplication::translate("Admin", "\353\263\264\354\234\240 \354\236\220\354\202\260", nullptr));
-        confirmUserChangeBtn->setText(QCoreApplication::translate("Admin", "\355\231\225\354\235\270", nullptr));
+        AdminMenu->setWindowTitle(QCoreApplication::translate("AdminMenu", "\352\264\200\353\246\254\354\236\220 \353\251\224\353\211\264", nullptr));
+        titleLabel->setText(QCoreApplication::translate("AdminMenu", "\352\264\200\353\246\254\354\236\220 \355\216\230\354\235\264\354\247\200", nullptr));
+        manageUserBtn->setText(QCoreApplication::translate("AdminMenu", "\354\202\254\354\232\251\354\236\220 \352\264\200\353\246\254", nullptr));
+        logoutBtn->setText(QCoreApplication::translate("AdminMenu", "\353\241\234\352\267\270\354\225\204\354\233\203", nullptr));
+        exitBtn->setText(QCoreApplication::translate("AdminMenu", "\354\242\205\353\243\214", nullptr));
+        viewUserListBtn->setText(QCoreApplication::translate("AdminMenu", "\354\202\254\354\232\251\354\236\220 \353\252\251\353\241\235", nullptr));
+        modifyUserBtn->setText(QCoreApplication::translate("AdminMenu", "\354\202\254\354\232\251\354\236\220 \354\210\230\354\240\225", nullptr));
+        prevUserPageBtn->setText(QCoreApplication::translate("AdminMenu", "\354\235\264\354\240\204", nullptr));
+        userPageLabel->setText(QCoreApplication::translate("AdminMenu", "\355\216\230\354\235\264\354\247\200 1 / 1", nullptr));
+        nextUserPageBtn->setText(QCoreApplication::translate("AdminMenu", "\353\213\244\354\235\214", nullptr));
+        userIdEdit->setPlaceholderText(QCoreApplication::translate("AdminMenu", "\354\210\230\354\240\225\355\225\240 \354\225\204\354\235\264\353\224\224", nullptr));
+        userPwEdit->setPlaceholderText(QCoreApplication::translate("AdminMenu", "\354\203\210 \353\271\204\353\260\200\353\262\210\355\230\270", nullptr));
+        userAssetEdit->setPlaceholderText(QCoreApplication::translate("AdminMenu", "\353\263\264\354\234\240 \354\236\220\354\202\260", nullptr));
+        confirmUserChangeBtn->setText(QCoreApplication::translate("AdminMenu", "\355\231\225\354\235\270", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Admin: public Ui_Admin {};
+    class AdminMenu: public Ui_AdminMenu {};
 } // namespace Ui
 
 QT_END_NAMESPACE

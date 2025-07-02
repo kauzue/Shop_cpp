@@ -9,4 +9,8 @@ public:
     static std::string ChangeId(const std::string& Id, const std::string& payload);
     static std::string ChangePw(const std::string& Id, const std::string& payload);
     static std::string DeleteAccount(const std::string& Id, const std::string& payload);
+    static std::string UserChange(const std::string& payload);
+    static std::string UserList(const std::string& payload);
+    static std::string ProductList(const std::string& payload);
+    static std::string Asset(const std::string& Id);
 };

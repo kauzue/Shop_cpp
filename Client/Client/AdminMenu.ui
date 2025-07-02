@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminMenu</class>
+ <widget class="QMainWindow" name="AdminMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>관리자 메뉴</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="titleLabel">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>관리자 페이지</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="mainLayout">
+      <item>
+       <layout class="QVBoxLayout" name="leftMenuLayout">
+        <item>
+         <widget class="QPushButton" name="manageUserBtn">
+          <property name="text">
+           <string>사용자 관리</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="logoutBtn">
+          <property name="text">
+           <string>로그아웃</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exitBtn">
+          <property name="text">
+           <string>종료</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="contentStack">
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="userPage">
+         <layout class="QVBoxLayout" name="userPageLayout">
+          <item>
+           <widget class="QPushButton" name="viewUserListBtn">
+            <property name="text">
+             <string>사용자 목록</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="modifyUserBtn">
+            <property name="text">
+             <string>사용자 수정</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="userListPage">
+         <layout class="QVBoxLayout" name="userListLayout">
+          <item>
+           <layout class="QVBoxLayout" name="userListContainer"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="pageControlLayout">
+            <item>
+             <widget class="QPushButton" name="prevUserPageBtn">
+              <property name="text">
+               <string>이전</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="userPageLabel">
+              <property name="text">
+               <string>페이지 1 / 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="nextUserPageBtn">
+              <property name="text">
+               <string>다음</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="changeUserPage">
+         <layout class="QVBoxLayout" name="changeUserLayout">
+          <item>
+           <widget class="QLineEdit" name="userId">
+            <property name="placeholderText">
+             <string>유저 아이디</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="userIdEdit">
+            <property name="placeholderText">
+             <string>수정할 아이디</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="userPwEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::EchoMode::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>새 비밀번호</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="userAssetEdit">
+            <property name="placeholderText">
+             <string>보유 자산</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmUserChangeBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

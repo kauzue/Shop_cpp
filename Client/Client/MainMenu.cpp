@@ -38,16 +38,91 @@ void MainMenu::on_productBtn_clicked()
 void MainMenu::on_viewProductBtn_clicked()
 {
     ui->contentStack->setCurrentWidget(ui->viewProductPage);
+    currentPage = 0;
+    updateList();
+}
+
+void MainMenu::updateList()
+{
+    QString msg = "productlist:" + QString::number(currentPage);
+    socket->write(msg.toUtf8());
+    socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+        QString allData = QString::fromUtf8(socket->readAll()).trimmed();
+        QStringList lines = allData.split("\n");
+
+        if (lines.isEmpty()) {
+            return;
+        }
+
+        QString totalPage = lines[0];
+        if (totalPage == "-1") {
+            QMessageBox::warning(this, "오류", "현재 판매중인 상품이 없습니다.");
+            ui->contentStack->hide();
+            return;
+        }
+        else if (currentPage > totalPage.toInt()) {
+            QMessageBox::warning(this, "오류", "현재가 마지막 페이지입니다.");
+            return;
+        }
+        ui->pageLabel->setText(QString("페이지 " + QString::number(currentPage) + " / " + totalPage));
+
+        while (QLayoutItem* child = ui->productListLayout->takeAt(0)) {
+            if (child->layout()) {
+                QLayout* innerLayout = child->layout();
+                QLayoutItem* innerChild;
+                while ((innerChild = innerLayout->takeAt(0)) != nullptr) {
+                    if (innerChild->widget())
+                        delete innerChild->widget();
+                    delete innerChild;
+                }
+            }
+            else if (child->widget()) {
+                delete child->widget();
+            }
+        }
+
+        for (int i = 1; i < lines.size(); ++i) {
+            QString line = lines[i].trimmed();
+            if (line.isEmpty()) continue;
+
+            QStringList fields = line.split(",");
+            if (fields.size() != 4) continue;
+
+            QString productName = fields[0];
+            QString productPrice = fields[1];
+            QString productQuantity = fields[2];
+            QString productUser = fields[3];
+
+            QHBoxLayout* row = new QHBoxLayout;
+
+            QString text = "이름 : " + productName + " / 개수 : " + productPrice + " / 수량 : " + productQuantity + " / 판매자 : " + productUser;
+
+            QPushButton* productBuyBtn = new QPushButton(text);
+            productBuyBtn->setToolTip(text);
+
+            row->addWidget(productBuyBtn);
+            ui->productListLayout->addLayout(row);
+        }
+    }
 }
 
 void MainMenu::on_prevPageBtn_clicked()
 {
-
+    if (currentPage > 0) {
+        currentPage--;
+        updateList();
+    }
+    else {
+        QMessageBox::warning(this, "오류", "첫 페이지입니다.");
+    }
 }
 
 void MainMenu::on_nextPageBtn_clicked()
 {
-
+    currentPage++;
+    updateList();
 }
 
 void MainMenu::on_addProductBtn_clicked()
@@ -163,6 +238,14 @@ void MainMenu::on_confirmChangePwBtn_clicked()
 
 void MainMenu::on_assetBtn_clicked()
 {
+    QString msg = "asset";
+    socket->write(msg.toUtf8());
+    socket->flush();
+
+    if (socket->waitForReadyRead(3000)) {
+        QString response = QString::fromUtf8(socket->readAll()).trimmed();
+        ui->assetLabel->setText("보유 자산 : " + response);
+    }
 	ui->contentStack->setCurrentWidget(ui->assetPage);
 }
 
@@ -187,7 +270,7 @@ void MainMenu::on_deleteAccountBtn_clicked()
             QMessageBox::information(this, "성공", "계정을 삭제하였습니다.");
             Login* loginWindow = new Login(nullptr, socket);
             loginWindow->setAttribute(Qt::WA_DeleteOnClose);
-            loginWindow->setWindowTitle("로그인 - " + ip + ":" + QString::number(port));
+            loginWindow->setWindowTitle("로그인");
             loginWindow->show();
             this->close();
         }
@@ -238,4 +321,24 @@ void MainMenu::resizeEvent(QResizeEvent* event)
     ui->logoutBtn->setFont(font);
     ui->deleteAccountBtn->setFont(font);
     ui->exitBtn->setFont(font);
+
+    for (int i = 0; i < ui->productListLayout->count(); ++i) {
+        QLayoutItem* item = ui->productListLayout->itemAt(i);
+        QHBoxLayout* rowLayout = qobject_cast<QHBoxLayout*>(item->layout());
+        if (!rowLayout) continue;
+
+        for (int j = 0; j < rowLayout->count(); ++j) {
+            QPushButton* btn = qobject_cast<QPushButton*>(rowLayout->itemAt(j)->widget());
+            if (!btn) continue;
+
+            btn->setFont(font);
+
+            QString fullText = btn->toolTip();
+            QFontMetrics fm(font);
+            int maxTextWidth = btn->width() - 20;
+
+            QString elided = fm.elidedText(fullText, Qt::ElideRight, maxTextWidth);
+            btn->setText(elided);
+        }
+    }
 }

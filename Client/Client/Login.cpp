@@ -1,9 +1,11 @@
+#include <QMessageBox>
+
 #include "Login.h"
 #include "ui_Login.h"
 #include "Signup.h"
 #include "ServerConnect.h"
 #include "MainMenu.h"
-#include <QMessageBox>
+#include "AdminMenu.h"
 
 Login::Login(QWidget* parent, QTcpSocket* socket)
     : QMainWindow(parent), ui(new Ui::Login), socket(socket)
@@ -47,11 +49,10 @@ void Login::on_loginBtn_clicked()
         }
         else if (response == "success:admin") {
 
-            //이거 수정해서 관리자 화면 띄우면 됨
-            /*Login* loginWindow = new Login(nullptr, socket);
-            loginWindow->setAttribute(Qt::WA_DeleteOnClose);
-            loginWindow->show();
-            this->close();*/
+            AdminMenu* AdminMenuWindow = new AdminMenu(nullptr, socket);
+            AdminMenuWindow->setAttribute(Qt::WA_DeleteOnClose);
+            AdminMenuWindow->show();
+            this->close();
         }
         else if (response == "fail") {
             QMessageBox::warning(this, "실패", "아이디 혹은 비밀번호가 일치하지 않습니다.");

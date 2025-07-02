@@ -20,15 +20,17 @@ public:
 private slots:
     void on_manageUserBtn_clicked();
     void on_viewUserListBtn_clicked();
+    void updateList();
     void on_prevUserPageBtn_clicked();
     void on_nextUserPageBtn_clicked();
     void on_modifyUserBtn_clicked();
     void on_confirmUserChangeBtn_clicked();
     void on_logoutBtn_clicked();
-    void on_exitBtn_clickked();
+    void on_exitBtn_clicked();
     void resizeEvent(QResizeEvent* evnet);
 
 private:
     Ui::AdminMenu* ui;
     QTcpSocket* socket;
+    int currentPage;
 };

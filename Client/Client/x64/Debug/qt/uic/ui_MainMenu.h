@@ -95,7 +95,7 @@ public:
         font.setPointSize(20);
         font.setBold(true);
         titleLabel->setFont(font);
-        titleLabel->setAlignment(Qt::AlignCenter);
+        titleLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(titleLabel);
 
@@ -207,7 +207,7 @@ public:
 
         pageLabel = new QLabel(viewProductPage);
         pageLabel->setObjectName("pageLabel");
-        pageLabel->setAlignment(Qt::AlignCenter);
+        pageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         hboxLayout->addWidget(pageLabel);
 
@@ -266,7 +266,7 @@ public:
         changePwLayout->setObjectName("changePwLayout");
         newPwEdit = new QLineEdit(changePwPage);
         newPwEdit->setObjectName("newPwEdit");
-        newPwEdit->setEchoMode(QLineEdit::Password);
+        newPwEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         changePwLayout->addWidget(newPwEdit);
 
@@ -282,7 +282,7 @@ public:
         assetLayout->setObjectName("assetLayout");
         assetLabel = new QLabel(assetPage);
         assetLabel->setObjectName("assetLabel");
-        assetLabel->setAlignment(Qt::AlignCenter);
+        assetLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         assetLayout->addWidget(assetLabel);
 

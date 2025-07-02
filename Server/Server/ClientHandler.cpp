@@ -53,6 +53,25 @@ void ClientHandler::operator()() {
             std::string res = UserManager::DeleteAccount(Id, payload);
             send(clientSocket, res.c_str(), res.size(), 0);
         }
+        else if (msg.compare(0, 11, "userchange:") == 0) {
+            std::string payload = msg.substr(11);
+            std::string res = UserManager::UserChange(payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
+        else if (msg.compare(0, 9, "userlist:") == 0) {
+            std::string payload = msg.substr(9);
+            std::string res = UserManager::UserList(payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
+        else if (msg.compare(0, 12, "productlist:") == 0) {
+            std::string payload = msg.substr(12);
+            std::string res = UserManager::ProductList(payload);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
+        else if (msg.compare(0, 12, "asset") == 0) {
+            std::string res = UserManager::Asset(Id);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
     }
 
     std::cout << "클라이언트 연결 종료" << std::endl;

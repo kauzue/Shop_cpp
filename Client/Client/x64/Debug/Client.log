@@ -1,6 +1,4 @@
 ﻿   Qt/MSBuild: 3.4.0.1
    Qt: 6.9.1
-  uic MainMenu.ui
   MainMenu.cpp
-  moc_ServerConnect.cpp
   Client.vcxproj -> D:\개발\Shop_cpp\Client\x64\Debug\Client.exe

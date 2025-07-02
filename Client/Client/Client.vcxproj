@@ -96,7 +96,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Signup.cpp" />
     <QtRcc Include="ServerConnect.qrc" />
-    <QtUic Include="Admin.ui" />
+    <QtUic Include="AdminMenu.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="MainMenu.ui" />
     <QtUic Include="ServerConnect.ui" />

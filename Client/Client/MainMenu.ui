@@ -1,322 +1,322 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-	<class>MainMenu</class>
-	<widget class="QMainWindow" name="MainMenu">
-		<property name="geometry">
-			<rect>
-				<x>0</x>
-				<y>0</y>
-				<width>1000</width>
-				<height>600</height>
-			</rect>
-		</property>
-		<property name="windowTitle">
-			<string>상점</string>
-		</property>
-		<widget class="QWidget" name="centralwidget">
-			<layout class="QVBoxLayout" name="verticalLayout">
-				<item>
-					<widget class="QLabel" name="titleLabel">
-						<property name="font">
-							<font>
-								<pointsize>20</pointsize>
-								<bold>true</bold>
-							</font>
-						</property>
-						<property name="text">
-							<string>상점</string>
-						</property>
-						<property name="alignment">
-							<set>Qt::AlignCenter</set>
-						</property>
-					</widget>
-				</item>
-				<item>
-					<layout class="QHBoxLayout" name="mainLayout">
-						<item>
-							<layout class="QVBoxLayout" name="leftMenuLayout">
-								<item>
-									<widget class="QPushButton" name="productBtn">
-										<property name="text">
-											<string>상품</string>
-										</property>
-									</widget>
-								</item>
-								<item>
-									<widget class="QPushButton" name="friendBtn">
-										<property name="text">
-											<string>친구</string>
-										</property>
-									</widget>
-								</item>
-								<item>
-									<widget class="QPushButton" name="profileBtn">
-										<property name="text">
-											<string>내 프로필</string>
-										</property>
-									</widget>
-								</item>
-								<item>
-									<widget class="QPushButton" name="exitBtn">
-										<property name="text">
-											<string>종료</string>
-										</property>
-									</widget>
-								</item>
-							</layout>
-						</item>
-						<item>
-							<widget class="QStackedWidget" name="contentStack">
-								<property name="currentIndex">
-									<number>6</number>
-								</property>
-								<widget class="QWidget" name="productPage">
-									<layout class="QVBoxLayout" name="productLayout">
-										<item>
-											<spacer name="topSpacer">
-												<property name="orientation">
-													<enum>Qt::Vertical</enum>
-												</property>
-												<property name="sizeHint" stdset="0">
-													<size>
-														<width>20</width>
-														<height>100</height>
-													</size>
-												</property>
-											</spacer>
-										</item>
-										<item>
-											<widget class="QPushButton" name="viewProductBtn">
-												<property name="text">
-													<string>상품 목록</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="addProductBtn">
-												<property name="text">
-													<string>상품 등록</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<spacer name="bottomSpacer">
-												<property name="orientation">
-													<enum>Qt::Vertical</enum>
-												</property>
-												<property name="sizeHint" stdset="0">
-													<size>
-														<width>20</width>
-														<height>100</height>
-													</size>
-												</property>
-											</spacer>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="profilePage">
-									<layout class="QVBoxLayout" name="profileLayout">
-										<item>
-											<spacer name="topProfileSpacer">
-												<property name="orientation">
-													<enum>Qt::Vertical</enum>
-												</property>
-												<property name="sizeHint" stdset="0">
-													<size>
-														<width>20</width>
-														<height>50</height>
-													</size>
-												</property>
-											</spacer>
-										</item>
-										<item>
-											<widget class="QPushButton" name="changeIdBtn">
-												<property name="text">
-													<string>아이디 변경</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="changePwBtn">
-												<property name="text">
-													<string>비밀번호 변경</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="assetBtn">
-												<property name="text">
-													<string>보유 자산 확인</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="logoutBtn">
-												<property name="text">
-													<string>로그아웃</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="deleteAccountBtn">
-												<property name="text">
-													<string>계정 삭제</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<spacer name="bottomProfileSpacer">
-												<property name="orientation">
-													<enum>Qt::Vertical</enum>
-												</property>
-												<property name="sizeHint" stdset="0">
-													<size>
-														<width>20</width>
-														<height>50</height>
-													</size>
-												</property>
-											</spacer>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="viewProductPage">
-									<layout class="QVBoxLayout" name="viewProductLayout">
-										<item>
-											<layout class="QVBoxLayout" name="productListLayout"/>
-										</item>
-										<item>
-											<layout class="QHBoxLayout">
-												<item>
-													<widget class="QPushButton" name="prevPageBtn">
-														<property name="text">
-															<string>이전</string>
-														</property>
-													</widget>
-												</item>
-												<item>
-													<widget class="QLabel" name="pageLabel">
-														<property name="text">
-															<string>페이지 1 / 1</string>
-														</property>
-														<property name="alignment">
-															<set>Qt::AlignCenter</set>
-														</property>
-													</widget>
-												</item>
-												<item>
-													<widget class="QPushButton" name="nextPageBtn">
-														<property name="text">
-															<string>다음</string>
-														</property>
-													</widget>
-												</item>
-											</layout>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="addProductPage">
-									<layout class="QVBoxLayout" name="addProductLayout">
-										<item>
-											<widget class="QLineEdit" name="productNameEdit">
-												<property name="placeholderText">
-													<string>상품명</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QLineEdit" name="productPriceEdit">
-												<property name="placeholderText">
-													<string>가격</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QLineEdit" name="productQuantityEdit">
-												<property name="placeholderText">
-													<string>개수</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="confirmAddProductBtn">
-												<property name="text">
-													<string>확인</string>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="changeIdPage">
-									<layout class="QVBoxLayout" name="changeIdLayout">
-										<item>
-											<widget class="QLineEdit" name="newIdEdit">
-												<property name="placeholderText">
-													<string>새 아이디</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="confirmChangeIdBtn">
-												<property name="text">
-													<string>확인</string>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="changePwPage">
-									<layout class="QVBoxLayout" name="changePwLayout">
-										<item>
-											<widget class="QLineEdit" name="newPwEdit">
-												<property name="echoMode">
-													<enum>QLineEdit::Password</enum>
-												</property>
-												<property name="placeholderText">
-													<string>새 비밀번호</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget class="QPushButton" name="confirmChangePwBtn">
-												<property name="text">
-													<string>확인</string>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-								<widget class="QWidget" name="assetPage">
-									<layout class="QVBoxLayout" name="assetLayout">
-										<item>
-											<widget class="QLabel" name="assetLabel">
-												<property name="text">
-													<string>보유 자산 :</string>
-												</property>
-												<property name="alignment">
-													<set>Qt::AlignCenter</set>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-							</widget>
-						</item>
-					</layout>
-				</item>
-			</layout>
-		</widget>
-		<widget class="QMenuBar" name="menubar">
-			<property name="geometry">
-				<rect>
-					<x>0</x>
-					<y>0</y>
-					<width>1000</width>
-					<height>21</height>
-				</rect>
-			</property>
-		</widget>
-		<widget class="QStatusBar" name="statusbar"/>
-	</widget>
-	<resources/>
-	<connections/>
+ <class>MainMenu</class>
+ <widget class="QMainWindow" name="MainMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>상점</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="titleLabel">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>상점</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="mainLayout">
+      <item>
+       <layout class="QVBoxLayout" name="leftMenuLayout">
+        <item>
+         <widget class="QPushButton" name="productBtn">
+          <property name="text">
+           <string>상품</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="friendBtn">
+          <property name="text">
+           <string>친구</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="profileBtn">
+          <property name="text">
+           <string>내 프로필</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exitBtn">
+          <property name="text">
+           <string>종료</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="contentStack">
+        <property name="currentIndex">
+         <number>6</number>
+        </property>
+        <widget class="QWidget" name="productPage">
+         <layout class="QVBoxLayout" name="productLayout">
+          <item>
+           <spacer name="topSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>100</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="viewProductBtn">
+            <property name="text">
+             <string>상품 목록</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="addProductBtn">
+            <property name="text">
+             <string>상품 등록</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="bottomSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>100</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="profilePage">
+         <layout class="QVBoxLayout" name="profileLayout">
+          <item>
+           <spacer name="topProfileSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>50</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="changeIdBtn">
+            <property name="text">
+             <string>아이디 변경</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="changePwBtn">
+            <property name="text">
+             <string>비밀번호 변경</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="assetBtn">
+            <property name="text">
+             <string>보유 자산 확인</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="logoutBtn">
+            <property name="text">
+             <string>로그아웃</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="deleteAccountBtn">
+            <property name="text">
+             <string>계정 삭제</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="bottomProfileSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>50</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="viewProductPage">
+         <layout class="QVBoxLayout" name="viewProductLayout">
+          <item>
+           <layout class="QVBoxLayout" name="productListLayout"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QPushButton" name="prevPageBtn">
+              <property name="text">
+               <string>이전</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="pageLabel">
+              <property name="text">
+               <string>페이지 1 / 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="nextPageBtn">
+              <property name="text">
+               <string>다음</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="addProductPage">
+         <layout class="QVBoxLayout" name="addProductLayout">
+          <item>
+           <widget class="QLineEdit" name="productNameEdit">
+            <property name="placeholderText">
+             <string>상품명</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="productPriceEdit">
+            <property name="placeholderText">
+             <string>가격</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="productQuantityEdit">
+            <property name="placeholderText">
+             <string>개수</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmAddProductBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="changeIdPage">
+         <layout class="QVBoxLayout" name="changeIdLayout">
+          <item>
+           <widget class="QLineEdit" name="newIdEdit">
+            <property name="placeholderText">
+             <string>새 아이디</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmChangeIdBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="changePwPage">
+         <layout class="QVBoxLayout" name="changePwLayout">
+          <item>
+           <widget class="QLineEdit" name="newPwEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::EchoMode::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>새 비밀번호</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="confirmChangePwBtn">
+            <property name="text">
+             <string>확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="assetPage">
+         <layout class="QVBoxLayout" name="assetLayout">
+          <item>
+           <widget class="QLabel" name="assetLabel">
+            <property name="text">
+             <string>보유 자산 :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
