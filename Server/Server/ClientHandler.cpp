@@ -72,6 +72,11 @@ void ClientHandler::operator()() {
             std::string res = UserManager::Asset(Id);
             send(clientSocket, res.c_str(), res.size(), 0);
         }
+        else if (msg.compare(0, 11, "buyproduct:") == 0) {
+            std::string product = msg.substr(11);
+            std::string res = UserManager::BuyProduct(Id, product);
+            send(clientSocket, res.c_str(), res.size(), 0);
+        }
     }
 
     std::cout << "클라이언트 연결 종료" << std::endl;

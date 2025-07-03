@@ -97,15 +97,41 @@ void MainMenu::updateList()
 
             QHBoxLayout* row = new QHBoxLayout;
 
-            QString text = "이름 : " + productName + " / 개수 : " + productPrice + " / 수량 : " + productQuantity + " / 판매자 : " + productUser;
+            QString text = "이름 : " + productName + " / 가격 : " + productPrice + " / 수량 : " + productQuantity + " / 판매자 : " + productUser;
 
-            QPushButton* productBuyBtn = new QPushButton(text);
+            QLabel* productLabel = new QLabel(text);
+            QPushButton* productBuyBtn = new QPushButton("구매");
+            connect(productBuyBtn, &QPushButton::clicked, this, [=]() {
+                QString msg = "buyproduct:" + QString::number(currentPage) + ":" + QString::number(i);
+                socket->write(msg.toUtf8());
+                socket->flush();
+
+                if (socket->waitForReadyRead(3000)) {
+                    QString response = QString::fromUtf8(socket->readAll()).trimmed();
+                    if (response == "success") {
+                        QMessageBox::information(this, "성공", "상품을 구매하였습니다.");
+                        ui->contentStack->hide();
+                    }
+                    else if (response == "not found") {
+                        QMessageBox::warning(this, "오류", "상품이 존재하지 않습니다.");
+                    }
+                    else if (response == "not sufficient") {
+                        QMessageBox::warning(this, "오류", "돈이 충분하지 않습니다.");
+                    }
+                    else {
+                        QMessageBox::warning(this, "오류", "오류 : " + response);
+                    }
+                }
+                });
             productBuyBtn->setToolTip(text);
+            productLabel->setWordWrap(true);
 
+            row->addWidget(productLabel);
             row->addWidget(productBuyBtn);
             ui->productListLayout->addLayout(row);
         }
     }
+    resizeEvent(nullptr);
 }
 
 void MainMenu::on_prevPageBtn_clicked()
@@ -327,18 +353,19 @@ void MainMenu::resizeEvent(QResizeEvent* event)
         QHBoxLayout* rowLayout = qobject_cast<QHBoxLayout*>(item->layout());
         if (!rowLayout) continue;
 
-        for (int j = 0; j < rowLayout->count(); ++j) {
-            QPushButton* btn = qobject_cast<QPushButton*>(rowLayout->itemAt(j)->widget());
-            if (!btn) continue;
+        for (int i = 0; i < ui->productListLayout->count(); ++i) {
+            QLayoutItem* item = ui->productListLayout->itemAt(i);
+            if (!item) continue;
 
-            btn->setFont(font);
+            QHBoxLayout* rowLayout = qobject_cast<QHBoxLayout*>(item->layout());
+            if (!rowLayout) continue;
 
-            QString fullText = btn->toolTip();
-            QFontMetrics fm(font);
-            int maxTextWidth = btn->width() - 20;
-
-            QString elided = fm.elidedText(fullText, Qt::ElideRight, maxTextWidth);
-            btn->setText(elided);
+            for (int j = 0; j < rowLayout->count(); ++j) {
+                QWidget* w = rowLayout->itemAt(j)->widget();
+                if (w) {
+                    w->setFont(font);
+                }
+            }
         }
     }
 }

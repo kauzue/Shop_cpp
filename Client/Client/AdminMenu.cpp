@@ -88,6 +88,8 @@ void AdminMenu::updateList()
 
             QLabel* idLabel = new QLabel("ID: " + userId);
             QLabel* assetLabel = new QLabel("자산: " + userAsset);
+            idLabel->setWordWrap(true);
+            assetLabel->setWordWrap(true);
 
             row->addWidget(idLabel);
             row->addWidget(assetLabel);
